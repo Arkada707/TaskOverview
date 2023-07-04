@@ -1,25 +1,36 @@
 <template>
   <div id="app">
-    <div id="logo-container">
+    <h1>Tasks</h1>
+    <p class="comment">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep, dumbass BIIIIIIIITTTCCCCHHHH!</p>
+    <div class="add-task">
+      <input v-model="taskInput" type="text" placeholder="Add new task">
+      <button @click="addTask">Add Task</button>
     </div>
-    <div id="split-pane">
-      <div id="task-pane">
-        <input v-model="taskInput" type="text" placeholder="Add new task">
-        <button @click="addTask">Add Task</button>
-        <ul>
-          <li v-for="(task, index) in tasks" :key="index">
-            <input type="checkbox" @change="completeTask" :id="'task-'+index">
-            <label :for="'task-'+index">{{ task }}</label>
-          </li>
-        </ul>
-      </div>
-      <div id="comment-pane">
-        <p>Hey! you haven't finished your task yet! Finish them then you can get food or sleep dumbass BIIIIIIIITTTCCCCHHHH!</p>
-      </div>
-    </div>
-    <div id="wotd">
-      On the keyboard. U and I are next to each other... But under that there's also J and K. LOL Sad Fuck!
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Task Name</th>
+          <th>Status</th>
+          <th>Date and Time Completed</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(task, index) in tasks" :key="index">
+          <td>{{ task.description }}</td>
+          <td>
+            <input type="checkbox" @change="completeTask(index)">
+            <span v-if="task.status === 'finished'">✓</span>
+          </td>
+          <td>{{ task.date }} {{ task.time }}</td>
+          <td>
+            <button @click="deleteTask(index)">-</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button @click="downloadTasks">Download Tasks</button>
+    <p id="wotd">On the keyboard. U and I are next to each other... But under that there's also J and K. LOL Sad Fuck!</p>
   </div>
 </template>
 
@@ -28,20 +39,60 @@ export default {
   data() {
     return {
       taskInput: '',
-      tasks: [],
+      tasks: [
+        {
+          description: 'Task1',
+          status: 'unfinished',
+          date: '',
+          time: ''
+        }
+      ]
     };
   },
   methods: {
     addTask() {
       if (this.taskInput) {
-        this.tasks.push(this.taskInput);
+        this.tasks.push({
+          description: this.taskInput,
+          status: 'unfinished',
+          date: '',
+          time: ''
+        });
         this.taskInput = '';
       }
     },
-    completeTask() {
-      alert('Ha, you just finished a task! You no life loser ;)');
+    completeTask(index) {
+      const task = this.tasks[index];
+      if (task.status === 'unfinished') {
+        alert('Ha! You just finished a task, you no life loser ;)');
+        task.status = 'finished';
+        task.date = new Date().toLocaleDateString();
+        task.time = new Date().toLocaleTimeString();
+      }
+    },
+    downloadTasks() {
+      const content = 'Task Name\t\tStatus\t\tDate and Time Completed\n';
+      this.tasks.forEach(task => {
+        content += `${task.description}\t\t${task.status}\t\t${task.date} ${task.time}\n`;
+      });
+      this.downloadFile('tasks.txt', content);
+    },
+    deleteTask(index) {
+      const confirmation = window.confirm("Are you sure you want to delete this? Don't cry to me if you messed up");
+      if (confirmation) {
+        this.tasks.splice(index, 1);
+      }
+    },
+    downloadFile(filename, content) {
+      const element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+      element.setAttribute('download', filename);
+      element.style.display = 'none';
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
     }
-  },
+  }
 };
 </script>
 
@@ -89,6 +140,18 @@ body {
     padding: 20px;
 }
 
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  outline: 2px solid green;
+}
+
+th,
+td {
+  padding: 8px;
+  border: 1px solid black;
+}
+
 #taskInput {
     width: 80%;
     padding: 10px;
@@ -129,4 +192,3 @@ button {
 }
 
 </style>
-
