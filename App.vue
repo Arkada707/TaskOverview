@@ -71,7 +71,7 @@ export default {
       }
     },
     downloadTasks() {
-      const content = 'Task Name\t\tStatus\t\tDate and Time Completed\n';
+      let content = 'Task Name\t\tStatus\t\tDate and Time Completed\n';
       this.tasks.forEach(task => {
         content += `${task.description}\t\t${task.status}\t\t${task.date} ${task.time}\n`;
       });
