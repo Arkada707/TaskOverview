@@ -5,10 +5,12 @@
     "jsx": "preserve",
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "allowImportingTsExtensions": true
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "emitDeclarationOnly": false
   },
   "vueCompilerOptions": {
-    "target": 3.3
+    "target": "auto"
   }
 }
