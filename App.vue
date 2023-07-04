@@ -60,9 +60,15 @@ export default {
   justify-content: space-around;
 }
 
-#task-pane,
+#task-pane {
+  width: 45%;
+}
+
 #comment-pane {
   width: 45%;
+  margin: 0 auto; /* Center the comment pane horizontally */
+  position: absolute; /* Position it absolutely */
+  top: 0; /* Place it at the top of the page */
 }
 
 #wotd {
@@ -70,6 +76,7 @@ export default {
   bottom: 0;
   width: 100%;
 }
+
 body {
     background-color: black;
     color: lime;
@@ -111,4 +118,15 @@ li {
     padding: 10px;
     background-color: #333;
 }
+
+/* Add green boxes */
+input[type="text"],
+button {
+    border: 2px solid lime;
+    padding: 10px;
+    background-color: black;
+    color: lime;
+}
+
 </style>
+
