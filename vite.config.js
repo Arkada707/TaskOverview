@@ -5,8 +5,6 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   build: {
-    rollupOptions: {
-      external: ['/src/main.js'],
-    },
+    outDir: 'dist', // Specify a different output directory
   },
 })
