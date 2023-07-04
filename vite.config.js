@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     rollupOptions: {
-      external: ['./main.js'],
+      external: ['/src/main.js'],
     },
   },
 })
