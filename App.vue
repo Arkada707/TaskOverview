@@ -143,13 +143,13 @@ body {
 table {
   margin: 0 auto;
   border-collapse: collapse;
-  outline: 2px solid green;
+  outline: 3px solid lime;
 }
 
 th,
 td {
   padding: 8px;
-  border: 1px solid black;
+  border: 2px solid lime;
 }
 
 #taskInput {
