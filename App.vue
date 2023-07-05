@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import { exportObjectAsCSV } from './utils';
+
 export default {
   data() {
     return {
@@ -84,11 +86,13 @@ export default {
       this.$cookies.set('tasks', this.tasks);
     },
     downloadTasks() {
-      let content = 'Task Name\t\tStatus\t\tDate and Time Completed\n';
-      this.tasks.forEach(task => {
-        content += `${task.description}\t\t${task.status}\t\t${task.date} ${task.time}\n`;
-      });
-      this.downloadFile('tasks.txt', content);
+      const content = this.tasks.map(task => ({
+        ['Task Name']: task.description,
+        ['Status']: task.status,
+        ['Date and Time COmpleted']: task.date + " " + task.time
+      }))
+
+      exportObjectAsCSV(content, 'My Tasks', { keysAsHeader: true });
     },
     deleteTask(index) {
       const confirmation = window.confirm("Are you sure you want to delete this? Don't cry to me if you messed up");
@@ -98,15 +102,6 @@ export default {
         this.$cookies.set('tasks', this.tasks);
       }
     },
-    downloadFile(filename, content) {
-      const element = document.createElement('a');
-      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
-      element.setAttribute('download', filename);
-      element.style.display = 'none';
-      document.body.appendChild(element);
-      element.click();
-      document.body.removeChild(element);
-    }
   }
 };
 </script>
