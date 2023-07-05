@@ -80,6 +80,8 @@ export default {
         task.date = new Date().toLocaleDateString();
         task.time = new Date().toLocaleTimeString();
       }
+      // Save tasks to cookies
+      this.$cookies.set('tasks', this.tasks);
     },
     downloadTasks() {
       let content = 'Task Name\t\tStatus\t\tDate and Time Completed\n';
@@ -92,6 +94,8 @@ export default {
       const confirmation = window.confirm("Are you sure you want to delete this? Don't cry to me if you messed up");
       if (confirmation) {
         this.tasks.splice(index, 1);
+        // Save tasks to cookies
+        this.$cookies.set('tasks', this.tasks);
       }
     },
     downloadFile(filename, content) {
