@@ -30,6 +30,11 @@
       </tbody>
     </table>
     <button @click="downloadTasks">Download Tasks</button>
+    <div class="ad-zone">
+      <script>
+        (function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://inklinkor.com/tag.min.js',6103036,document.body||document.documentElement)// Paste your Multitag code snippet here
+      </script>
+    </div>
     <p id="wotd">On the keyboard. U and I are next to each other... But under that there's also J and K. LOL!</p>
   </div>
 </template>
@@ -104,12 +109,6 @@ export default {
         this.$cookies.set('tasks', this.tasks);
       }
     },
-  },
-  mounted() {
-    const script = document.createElement('script');
-    script.src = 'https://inklinkor.com/tag.min.js';
-    script.setAttribute('data-zone', '6102952');
-    document.body.appendChild(script);
   },
 };
 </script>
