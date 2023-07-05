@@ -11,7 +11,6 @@ if (tasks) {
   app.config.globalProperties.$tasks = tasks;
 }
 
-app.use(VueCookies);
-app.mount('#app');
+createApp(App).use(VueCookies).mount('#app');
 
 
