@@ -39,14 +39,7 @@ export default {
   data() {
     return {
       taskInput: '',
-      tasks: [
-        {
-          description: 'Test 1',
-          status: 'unfinished',
-          date: '',
-          time: ''
-        }
-      ]
+      tasks: []
     };
   },
   created() {
@@ -54,6 +47,14 @@ export default {
     const tasks = this.$cookies.get('tasks');
     if (tasks) {
       this.tasks = tasks;
+    } else {
+      // Add the "Test 1" task if the tasks array is empty
+      this.tasks.push({
+        description: 'Test 1',
+        status: 'unfinished',
+        date: '',
+        time: ''
+      });
     }
   },
   methods: {
