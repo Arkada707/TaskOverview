@@ -41,7 +41,7 @@ export default {
       taskInput: '',
       tasks: [
         {
-          description: 'Task1',
+          description: 'Test 1',
           status: 'unfinished',
           date: '',
           time: ''
@@ -52,14 +52,17 @@ export default {
   methods: {
     addTask() {
       if (this.taskInput) {
-        this.tasks.push({
-          description: this.taskInput,
-          status: 'unfinished',
-          date: '',
-          time: ''
-        });
-        this.taskInput = '';
-      }
+       this.tasks.push({
+       description: this.taskInput,
+       status: 'unfinished',
+       date: '',
+       time: ''
+      });
+      this.taskInput = '';
+
+      // Save tasks to cookies
+      this.$cookies.set('tasks', this.tasks);
+      } 
     },
     completeTask(index) {
       const task = this.tasks[index];
