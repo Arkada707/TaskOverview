@@ -8,9 +8,11 @@
     "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "emitDeclarationOnly": false
+    "emitDeclarationOnly": false,
+    "types": ["cypress"]
   },
   "vueCompilerOptions": {
     "target": "auto"
-  }
+  },
+  "include": ["**/*.*"]
 }
