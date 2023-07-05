@@ -7,9 +7,8 @@
       <button @click="addTask">Add Task</button>
     </div>
     <div class="ad-zone">
-      <script>
-        (function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://inklinkor.com/tag.min.js',6103036,document.body||document.documentElement)// Paste your Multitag code snippet here
-      </script>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4695954536473698"
+     crossorigin="anonymous"></script>
     </div>
     <table>
       <thead>
