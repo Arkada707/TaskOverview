@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Tasks</h1>
-    <p class="comment">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep</p>
+    <p class="comment">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep.</p>
     <div class="add-task">
       <input v-model="taskInput" type="text" placeholder="Add new task">
       <button @click="addTask">Add Task</button>
@@ -75,7 +75,7 @@ export default {
     completeTask(index) {
       const task = this.tasks[index];
       if (task.status === 'unfinished') {
-        alert('Ha! You just finished a task, you no life loser ;)');
+        alert('You just finished a task. Nice! Take a break and continue or you can rest/sleep;)');
         task.status = 'finished';
         task.date = new Date().toLocaleDateString();
         task.time = new Date().toLocaleTimeString();
