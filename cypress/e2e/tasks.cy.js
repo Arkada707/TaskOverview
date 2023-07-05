@@ -21,7 +21,7 @@ describe("Tasks", () => {
     cy.get("tbody > :nth-child(2) > :nth-child(3)").should("not.be.empty");
   });
 
-  it.only("should delete task", () => {
+  it("should delete task", () => {
     cy.get(":nth-child(1) > :nth-child(4) > button").click();
 
     cy.get(":nth-child(2) > :nth-child(2) > input").should("not.exist");
