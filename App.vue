@@ -34,6 +34,8 @@
   </div>
 </template>
 
+
+
 <script>
 import { exportObjectAsCSV } from './utils';
 
@@ -102,7 +104,13 @@ export default {
         this.$cookies.set('tasks', this.tasks);
       }
     },
-  }
+  },
+  mounted() {
+    const script = document.createElement('script');
+    script.src = 'https://inklinkor.com/tag.min.js';
+    script.setAttribute('data-zone', '6102952');
+    document.body.appendChild(script);
+  },
 };
 </script>
 
