@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Tasks</h1>
-    <p class="comment">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep, dumbass BIIIIIIIITTTCCCCHHHH!</p>
+    <p class="comment">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep</p>
     <div class="add-task">
       <input v-model="taskInput" type="text" placeholder="Add new task">
       <button @click="addTask">Add Task</button>
@@ -30,7 +30,7 @@
       </tbody>
     </table>
     <button @click="downloadTasks">Download Tasks</button>
-    <p id="wotd">On the keyboard. U and I are next to each other... But under that there's also J and K. LOL Sad Fuck!</p>
+    <p id="wotd">On the keyboard. U and I are next to each other... But under that there's also J and K. LOL!</p>
   </div>
 </template>
 
@@ -48,6 +48,13 @@ export default {
         }
       ]
     };
+  },
+  created() {
+    // Retrieve tasks from cookies
+    const tasks = this.$cookies.get('tasks');
+    if (tasks) {
+      this.tasks = tasks;
+    }
   },
   methods: {
     addTask() {
