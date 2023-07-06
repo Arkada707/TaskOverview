@@ -15,7 +15,9 @@
         <tr>
           <th>Task Name</th>
           <th>Status</th>
+          <th>Date and Time Start</th> 
           <th>Date and Time Completed</th>
+          <th>Edit</th> 
           <th>Delete</th>
         </tr>
       </thead>
@@ -23,10 +25,14 @@
         <tr v-for="(task, index) in tasks" :key="index">
           <td>{{ task.description }}</td>
           <td>
-            <input type="checkbox" @change="completeTask(index)">
+            <input type="checkbox" @change="completeTask(index)" :checked="task.status === 'finished'">
             <span v-if="task.status === 'finished'">✓</span>
           </td>
+          <td>{{ task.dateStart }}</td> <!-- New column -->
           <td>{{ task.date }} {{ task.time }}</td>
+          <td>
+            <button @click="editTask(index)">Edit</button> <!-- New button -->
+          </td>
           <td>
             <button @click="deleteTask(index)">-</button>
           </td>
@@ -83,13 +89,24 @@ export default {
     completeTask(index) {
       const task = this.tasks[index];
       if (task.status === 'unfinished') {
-        alert('You just finished a task. Nice! Take a break and continue or you can rest/sleep;)');
-        task.status = 'finished';
-        task.date = new Date().toLocaleDateString();
-        task.time = new Date().toLocaleTimeString();
+        const confirmation = window.confirm('Ha! You just finished a task, you no life loser ;)');
+        if (confirmation) {
+          task.status = 'finished';
+          task.date = new Date().toLocaleDateString();
+          task.time = new Date().toLocaleTimeString();
+          // Save tasks to cookies
+          this.$cookies.set('tasks', this.tasks);
+        }
+      } else {
+        const confirmation = window.confirm('Are you sure you want to mark this task as unfinished?');
+        if (confirmation) {
+          task.status = 'unfinished';
+          task.date = '';
+          task.time = '';
+          // Save tasks to cookies
+          this.$cookies.set('tasks', this.tasks);
+        }
       }
-      // Save tasks to cookies
-      this.$cookies.set('tasks', this.tasks);
     },
     downloadTasks() {
       const content = this.tasks.map(task => ({
@@ -106,6 +123,19 @@ export default {
         this.tasks.splice(index, 1);
         // Save tasks to cookies
         this.$cookies.set('tasks', this.tasks);
+      }
+    },
+    editTask(index) {
+      const task = this.tasks[index];
+      const newDescription = prompt('Enter the new task name:', task.description);
+      if (newDescription !== null) {
+        const confirmation = window.confirm('Are you sure you want to edit this task?');
+        if (confirmation) {
+          task.description = newDescription;
+          // Update other properties if needed (e.g., dateStart, date, time)
+          // Save tasks to cookies
+          this.$cookies.set('tasks', this.tasks);
+        }
       }
     },
   },
