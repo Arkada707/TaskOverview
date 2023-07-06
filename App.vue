@@ -74,18 +74,22 @@ export default defineComponent({
   methods: {
     addTask() {
       if (this.taskInput) {
-        this.tasks.push({
-          description: this.taskInput,
-          status: 'unfinished',
-          dateStart: '',
-          date: '',
-          time: ''
-        });
-        this.taskInput = '';
+        const currentDate = new Date();
+        const formattedDate = currentDate.toLocaleDateString();
+        const formattedTime = currentDate.toLocaleTimeString();
 
-        // Save tasks to cookies
-        this.$cookies.set('tasks', this.tasks);
-      }
+        this.tasks.push({
+        description: this.taskInput,
+        status: 'unfinished',
+        dateStart: formattedDate + ' ' + formattedTime,
+        date: '',
+        time: ''
+      });
+      this.taskInput = '';
+
+      // Save tasks to cookies
+      this.$cookies.set('tasks', this.tasks);
+      } 
     },
     completeTask(index) {
       const task = this.tasks[index];
@@ -96,7 +100,7 @@ export default defineComponent({
         task.time = new Date().toLocaleTimeString();
       } else {
         alert('The task is marked as unfinished. Keep going!');
-task.status = 'unfinished';
+        task.status = 'unfinished';
         task.date = '';
         task.time = '';
       }
