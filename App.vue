@@ -8,16 +8,16 @@
     </div>
     <div class="ad-zone">
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4695954536473698"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     </div>
     <table>
       <thead>
         <tr>
           <th>Task Name</th>
           <th>Status</th>
-          <th>Date and Time Start</th> 
+          <th>Date and Time Start</th>
           <th>Date and Time Completed</th>
-          <th>Edit</th> 
+          <th>Edit</th>
           <th>Delete</th>
         </tr>
       </thead>
@@ -28,10 +28,10 @@
             <input type="checkbox" @change="completeTask(index)" :checked="task.status === 'finished'">
             <span v-if="task.status === 'finished'">✓</span>
           </td>
-          <td>{{ task.dateStart }}</td> <!-- New column -->
+          <td>{{ task.dateStart }}</td>
           <td>{{ task.date }} {{ task.time }}</td>
           <td>
-            <button @click="editTask(index)">Edit</button> <!-- New button -->
+            <button @click="editTask(index)">Edit</button>
           </td>
           <td>
             <button @click="deleteTask(index)">-</button>
@@ -44,12 +44,11 @@
   </div>
 </template>
 
-
-
 <script>
+import { defineComponent } from 'vue';
 import { exportObjectAsCSV } from './utils';
 
-export default {
+export default defineComponent({
   data() {
     return {
       taskInput: '',
@@ -66,6 +65,7 @@ export default {
       this.tasks.push({
         description: 'Test 1',
         status: 'unfinished',
+        dateStart: '',
         date: '',
         time: ''
       });
@@ -74,46 +74,58 @@ export default {
   methods: {
     addTask() {
       if (this.taskInput) {
-       this.tasks.push({
-       description: this.taskInput,
-       status: 'unfinished',
-       date: '',
-       time: ''
-      });
-      this.taskInput = '';
+        this.tasks.push({
+          description: this.taskInput,
+          status: 'unfinished',
+          dateStart: '',
+          date: '',
+          time: ''
+        });
+        this.taskInput = '';
 
-      // Save tasks to cookies
-      this.$cookies.set('tasks', this.tasks);
-      } 
+        // Save tasks to cookies
+        this.$cookies.set('tasks', this.tasks);
+      }
     },
     completeTask(index) {
       const task = this.tasks[index];
       if (task.status === 'unfinished') {
-        const confirmation = window.confirm('Ha! You just finished a task, you no life loser ;)');
-        if (confirmation) {
-          task.status = 'finished';
-          task.date = new Date().toLocaleDateString();
-          task.time = new Date().toLocaleTimeString();
-          // Save tasks to cookies
-          this.$cookies.set('tasks', this.tasks);
-        }
+        alert('You just finished a task. Nice! Take a break and continue or you can rest/sleep ;)');
+        task.status = 'finished';
+        task.date = new Date().toLocaleDateString();
+        task.time = new Date().toLocaleTimeString();
       } else {
-        const confirmation = window.confirm('Are you sure you want to mark this task as unfinished?');
-        if (confirmation) {
-          task.status = 'unfinished';
-          task.date = '';
-          task.time = '';
-          // Save tasks to cookies
-          this.$cookies.set('tasks', this.tasks);
-        }
+        alert('The task is marked as unfinished. Keep going!');
+task.status = 'unfinished';
+        task.date = '';
+        task.time = '';
+      }
+      // Save tasks to cookies
+      this.$cookies.set('tasks', this.tasks);
+    },
+    editTask(index) {
+      const task = this.tasks[index];
+      const newTaskDescription = prompt('Enter the new task name', task.description);
+      const newDateStart = prompt('Enter the new date and time start (YYYY-MM-DD HH:MM)', task.dateStart);
+      const newDateCompleted = prompt('Enter the new date and time completed (YYYY-MM-DD HH:MM)', task.date + ' ' + task.time);
+
+      if (newTaskDescription !== null && newDateStart !== null && newDateCompleted !== null) {
+        task.description = newTaskDescription;
+        task.dateStart = newDateStart;
+        const [newDate, newTime] = newDateCompleted.split(' ');
+        task.date = newDate;
+        task.time = newTime;
+
+        // Save tasks to cookies
+        this.$cookies.set('tasks', this.tasks);
       }
     },
     downloadTasks() {
       const content = this.tasks.map(task => ({
         ['Task Name']: task.description,
         ['Status']: task.status,
-        ['Date and Time COmpleted']: task.date + " " + task.time
-      }))
+        ['Date and Time Completed']: task.date + ' ' + task.time
+      }));
 
       exportObjectAsCSV(content, 'My Tasks', { keysAsHeader: true });
     },
@@ -125,21 +137,8 @@ export default {
         this.$cookies.set('tasks', this.tasks);
       }
     },
-    editTask(index) {
-      const task = this.tasks[index];
-      const newDescription = prompt('Enter the new task name:', task.description);
-      if (newDescription !== null) {
-        const confirmation = window.confirm('Are you sure you want to edit this task?');
-        if (confirmation) {
-          task.description = newDescription;
-          // Update other properties if needed (e.g., dateStart, date, time)
-          // Save tasks to cookies
-          this.$cookies.set('tasks', this.tasks);
-        }
-      }
-    },
   },
-};
+});
 </script>
 
 <style>
@@ -175,15 +174,15 @@ export default {
 }
 
 body {
-    background-color: black;
-    color: lime;
-    font-family: Arial, sans-serif;
+  background-color: black;
+  color: lime;
+  font-family: Arial, sans-serif;
 }
 
 .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 table {
@@ -199,42 +198,41 @@ td {
 }
 
 #taskInput {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
 }
 
 button {
-    padding: 10px;
-    margin: 10px 0;
-    background-color: lime;
-    border: none;
-    color: black;
-    cursor: pointer;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: lime;
+  border: none;
+  color: black;
+  cursor: pointer;
 }
 
 button:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 li {
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #333;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #333;
 }
 
 /* Add green boxes */
 input[type="text"],
 button {
-    border: 2px solid lime;
-    padding: 10px;
-    background-color: black;
-    color: lime;
+  border: 2px solid lime;
+  padding: 10px;
+  background-color: black;
+  color: lime;
 }
-
 </style>
