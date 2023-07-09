@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Tasks</h1>
+    <h1 class="header">Tasks</h1>
     <p class="comment">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep.</p>
     <div class="add-task">
       <input v-model="taskInput" type="text" placeholder="Add new task">
@@ -150,6 +150,15 @@ export default defineComponent({
   text-align: center;
   background-color: #C6CCD1;
   color: #0B333B;
+}
+
+.header {
+  background-color: #0000FF; /* Change to the exact blue you want */
+  color: #FFFFFF;
+  padding: 10px;
+  border: 2px solid #C0C0C0;
+  border-radius: 5px;  /* Optional: Rounds the corners of the header */
+  text-shadow: 1px 1px #C0C0C0;  /* Optional: Gives the text a silver shadow */
 }
 
 body {
