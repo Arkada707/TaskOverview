@@ -146,9 +146,9 @@ export default defineComponent({
 </script>
 
 <style>
-/* Add your CSS styles here */
 #app {
   text-align: center;
+  background-color: #eef7fd;
 }
 
 #logo-container {
@@ -166,21 +166,24 @@ export default defineComponent({
 
 #comment-pane {
   width: 45%;
-  margin: 0 auto; /* Center the comment pane horizontally */
-  position: absolute; /* Position it absolutely */
-  top: 0; /* Place it at the top of the page */
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
 }
 
 #wotd {
   position: fixed;
   bottom: 0;
   width: 100%;
+  background-color: #0078d7;
+  color: white;
+  padding: 10px;
 }
 
 body {
-  background-color: black;
-  color: lime;
-  font-family: Arial, sans-serif;
+  background-color: #eef7fd;
+  color: #4a4a4a;
+  font-family: Segoe UI, Tahoma, sans-serif;
 }
 
 .container {
@@ -192,13 +195,13 @@ body {
 table {
   margin: 0 auto;
   border-collapse: collapse;
-  outline: 3px solid lime;
 }
 
 th,
 td {
   padding: 8px;
-  border: 2px solid lime;
+  border: 1px solid #d5d5d5;
+  background-color: white;
 }
 
 #taskInput {
@@ -210,14 +213,15 @@ td {
 button {
   padding: 10px;
   margin: 10px 0;
-  background-color: lime;
+  background-color: #0078d7;
   border: none;
-  color: black;
+  color: white;
   cursor: pointer;
 }
 
 button:hover {
   opacity: 0.8;
+  background-color: #005999;
 }
 
 ul {
@@ -228,15 +232,16 @@ ul {
 li {
   margin: 10px 0;
   padding: 10px;
-  background-color: #333;
+  background-color: #f5f5f5;
+  border: 1px solid #d5d5d5;
 }
 
-/* Add green boxes */
 input[type="text"],
 button {
-  border: 2px solid lime;
+  border: 1px solid #d5d5d5;
   padding: 10px;
-  background-color: black;
-  color: lime;
+  background-color: white;
+  color: #4a4a4a;
 }
 </style>
+
