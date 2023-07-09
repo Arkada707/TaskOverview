@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1 class="header">Tasks</h1>
-    <p class="comment">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep.</p>
+    <p class="comment1">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep.</p>
     <div class="add-task">
       <input v-model="taskInput" type="text" placeholder="Add new task">
       <button @click="addTask">Add Task</button>
@@ -167,9 +167,10 @@ body {
   font-family: 'Courier New', Courier, monospace;
 }
 
-.comment {
-  color: #0B333B;
-  font-style: italic;
+.comment1 {
+  color: #000000; /* Black text */
+  background-color: #FFFF00; /* Yellow background */
+  padding: 10px;
 }
 
 .add-task,
@@ -181,12 +182,11 @@ body {
 }
 
 #wotd {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #0B333B;
-  color: #B7E0F2;
+  color: #0B333B; /* The color of the text in Emily is Away */
+  background-color: #F4FAFF; /* The color of the text background in Emily is Away */
   padding: 10px;
+  border: 1px solid #0B333B;
+  border-radius: 5px;
 }
 
 table {
