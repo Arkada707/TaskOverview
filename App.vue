@@ -162,7 +162,7 @@ export default defineComponent({
 }
 
 body {
-  background-color: #C6CCD1;
+  background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
   color: #0B333B;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -171,6 +171,7 @@ body {
   color: #000000; /* Black text */
   background-color: #FFFF00; /* Yellow background */
   padding: 10px;
+  font-weight: bold; /* Make the text bold */
 }
 
 .add-task,
