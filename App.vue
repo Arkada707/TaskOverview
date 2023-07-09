@@ -40,7 +40,7 @@
       </tbody>
     </table>
     <button @click="downloadTasks">Download Tasks</button>
-    <p id="wotd">On the keyboard. U and I are next to each other... But under that there's also J and K. LOL!</p>
+    <p id="wotd">{{ jokeOfTheDay }}</p>
   </div>
 </template>
 
@@ -52,24 +52,24 @@ export default defineComponent({
   data() {
     return {
       taskInput: '',
-      tasks: []
+      tasks: [],
       insults: [
-      'You finally managed to finish this task. Congrats, genius!',
-      'Wow, you did it. Do you want a cookie now?',
-      'Took you long enough...',
-      'Even a sloth could have finished this task faster.',
-      'You finished the task. What do you want, a medal?'
-      // Add as many more insults as you want
-      ]
+        'You finally managed to finish this task. Congrats, genius!',
+        'Wow, you did it. Do you want a cookie now?',
+        'Took you long enough...',
+        'Even a sloth could have finished this task faster.',
+        'You finished the task. What do you want, a medal?'
+        // Add as many more insults as you want
+      ],
       jokesOfTheDay: [
-      "You complete tasks as fast as your dating life moves... at a snail's pace.",
-      "Is your love life as disorganized as your task list? No wonder you're single!",
-      "You know, finishing a task is a lot like a relationship - both are hard for you to maintain.",
-      "Your commitment to finishing tasks is like your commitment to relationships... Oh wait, there isn't any.",
-      "I bet even your imaginary girlfriend gets more attention than your task list.",
-      "Your relationship status may be 'single', but your task list screams 'it's complicated'.",
-      "On the keyboard. U and I are next to each other... But under that there's also J and K. LOL Sad Fuck!",
-      //... add as many as you want
+        "You complete tasks as fast as your dating life moves... at a snail's pace.",
+        "Is your love life as disorganized as your task list? No wonder you're single!",
+        "You know, finishing a task is a lot like a relationship - both are hard for you to maintain.",
+        "Your commitment to finishing tasks is like your commitment to relationships... Oh wait, there isn't any.",
+        "I bet even your imaginary girlfriend gets more attention than your task list.",
+        "Your relationship status may be 'single', but your task list screams 'it's complicated'.",
+        "On the keyboard. U and I are next to each other... But under that there's also J and K. LOL Sad Fuck!",
+        //... add as many as you want
       ],
       jokeOfTheDay: '',
     };
@@ -88,8 +88,10 @@ export default defineComponent({
         date: '',
         time: ''
       });
-      this.setJoke();
     }
+    
+    // Update wotd with a new joke
+    this.setJoke();
   },
   methods: {
     addTask() {
@@ -99,17 +101,21 @@ export default defineComponent({
         const formattedTime = currentDate.toLocaleTimeString();
 
         this.tasks.push({
-        description: this.taskInput,
-        status: 'unfinished',
-        dateStart: formattedDate + ' ' + formattedTime,
-        date: '',
-        time: ''
-      });
-      this.taskInput = '';
+          description: this.taskInput,
+          status: 'unfinished',
+          dateStart: formattedDate + ' ' + formattedTime,
+          date: '',
+          time: ''
+        });
+        this.taskInput = '';
 
-      // Save tasks to cookies
-      this.$cookies.set('tasks', this.tasks);
-      } 
+        // Save tasks to cookies
+        this.$cookies.set('tasks', this.tasks);
+
+        // Generate and show an insult
+        const insultIndex = Math.floor(Math.random() * this.insults.length);
+        alert(this.insults[insultIndex]);
+      }
     },
     completeTask(index) {
       const task = this.tasks[index];
@@ -118,14 +124,16 @@ export default defineComponent({
         task.date = new Date().toLocaleDateString();
         task.time = new Date().toLocaleTimeString();
 
+        // Generate and show an insult
         const insultIndex = Math.floor(Math.random() * this.insults.length);
-        alert('You just finished a task. ' + this.insults[insultIndex]);
+        alert(this.insults[insultIndex]);
       } else {
         alert('The task is marked as unfinished. Keep going!');
         task.status = 'unfinished';
         task.date = '';
         task.time = '';
       }
+
       // Save tasks to cookies
       this.$cookies.set('tasks', this.tasks);
     },
