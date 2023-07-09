@@ -158,6 +158,19 @@ body {
   font-family: 'Courier New', Courier, monospace;
 }
 
+.comment {
+  color: #0B333B;
+  font-style: italic;
+}
+
+.add-task,
+.ad-zone {
+  background-color: #F4FAFF;
+  border: 2px solid #0B333B;
+  padding: 10px;
+  margin: 10px;
+}
+
 #wotd {
   position: fixed;
   bottom: 0;
@@ -165,22 +178,6 @@ body {
   background-color: #0B333B;
   color: #B7E0F2;
   padding: 10px;
-}
-
-#logo-container,
-#split-pane,
-#task-pane,
-#comment-pane {
-  background-color: #F4FAFF;
-  border: 2px solid #0B333B;
-  padding: 10px;
-  margin: 10px;
-}
-
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
 }
 
 table {
@@ -196,13 +193,12 @@ td {
   background-color: #F4FAFF;
 }
 
-#taskInput {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #F4FAFF;
+input[type="text"],
+button {
   border: 1px solid #0B333B;
+  padding: 10px;
   color: #0B333B;
+  background-color: #F4FAFF;
 }
 
 button {
@@ -218,24 +214,5 @@ button:hover {
   opacity: 0.8;
   background-color: #092227;
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #F4FAFF;
-  border: 1px solid #0B333B;
-}
-
-input[type="text"],
-button {
-  border: 1px solid #0B333B;
-  padding: 10px;
-  color: #0B333B;
-  background-color: #F4FAFF;
-}
 </style>
+
