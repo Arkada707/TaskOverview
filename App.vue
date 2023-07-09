@@ -180,17 +180,18 @@ export default defineComponent({
 </script>
 
 <style>
-#app {
-  text-align: center;
-  background-color: #C6CCD1;
-  color: #0B333B;
-}
 
 @font-face {
   font-family: 'Forced Square';
   src: url('forced-square.ttf') format('truetype');
 }
 
+#app {
+  text-align: center;
+  background-color: #C6CCD1;
+  color: #0B333B;
+  font-family: 'Forced Square', sans-serif; /* Add this line */
+}
 
 .header {
   background-color: #0000FF; /* Change to the exact blue you want */
