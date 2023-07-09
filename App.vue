@@ -168,8 +168,8 @@ export default defineComponent({
       }
     },
     setJoke() {
-      const currentDay = new Date().getDay(); // get the current day of the week
-      this.jokeOfTheDay = this.jokesOfTheDay[currentDay % this.jokesOfTheDay.length];
+      const randomIndex = Math.floor(Math.random() * this.jokesOfTheDay.length);
+      this.jokeOfTheDay = this.jokesOfTheDay[randomIndex];
     },
   },
 });
