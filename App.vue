@@ -183,6 +183,9 @@ export default defineComponent({
 }
 
 #app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   background-color: #C6CCD1;
   color: #0B333B;
@@ -263,5 +266,39 @@ button:hover {
   opacity: 0.8;
   background-color: #092227;
 }
+
+/* Responsive styles for small screens */
+@media (max-width: 767px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+/* Responsive styles for medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+}
+
+/* Responsive styles for large screens */
+@media (min-width: 1024px) {
+  .container {
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+}
+
 </style>
 
