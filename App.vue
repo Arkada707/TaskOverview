@@ -60,7 +60,18 @@ export default defineComponent({
       'Even a sloth could have finished this task faster.',
       'You finished the task. What do you want, a medal?'
       // Add as many more insults as you want
-    ]
+      ]
+      jokesOfTheDay: [
+      "You complete tasks as fast as your dating life moves... at a snail's pace.",
+      "Is your love life as disorganized as your task list? No wonder you're single!",
+      "You know, finishing a task is a lot like a relationship - both are hard for you to maintain.",
+      "Your commitment to finishing tasks is like your commitment to relationships... Oh wait, there isn't any.",
+      "I bet even your imaginary girlfriend gets more attention than your task list.",
+      "Your relationship status may be 'single', but your task list screams 'it's complicated'.",
+      "On the keyboard. U and I are next to each other... But under that there's also J and K. LOL Sad Fuck!",
+      //... add as many as you want
+      ],
+      jokeOfTheDay: '',
     };
   },
   created() {
@@ -77,6 +88,7 @@ export default defineComponent({
         date: '',
         time: ''
       });
+      this.setJoke();
     }
   },
   methods: {
@@ -151,6 +163,10 @@ export default defineComponent({
         this.$cookies.set('tasks', this.tasks);
       }
     },
+    setJoke() {
+      const currentDay = new Date().getDay(); // get the current day of the week
+      this.jokeOfTheDay = this.jokesOfTheDay[currentDay % this.jokesOfTheDay.length];
+    },
   },
 });
 </script>
@@ -162,6 +178,12 @@ export default defineComponent({
   color: #0B333B;
 }
 
+@font-face {
+  font-family: 'Forced Square';
+  src: url('forced-square.ttf') format('truetype');
+}
+
+
 .header {
   background-color: #0000FF; /* Change to the exact blue you want */
   color: #FFFFFF;
@@ -169,20 +191,20 @@ export default defineComponent({
   border: 2px solid #C0C0C0;
   border-radius: 5px;  /* Optional: Rounds the corners of the header */
   text-shadow: 1px 1px #C0C0C0;  /* Optional: Gives the text a silver shadow */
-  font-size: 32px
+  font-size: 42px
 }
 
 body {
   background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
   color: #0B333B;
-  font-family: 'VT323', monospace;
-  font-size: 18px;
+  font-family: 'Forced Square', sans-serif;
+  font-size: 26px;
 }
 
 .comment1 {
   color: #000000; /* Black text */
   background-color: #FFFF00; /* Yellow background */
-  padding: 10px;
+  padding: 16px;
   font-weight: bold; /* Make the text bold */
 }
 
@@ -197,7 +219,7 @@ body {
 #wotd {
   color: #0B333B; /* The color of the text in Emily is Away */
   background-color: #F4FAFF; /* The color of the text background in Emily is Away */
-  padding: 10px;
+  padding: 16px;
   border: 1px solid #0B333B;
   border-radius: 5px;
 }
