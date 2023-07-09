@@ -53,6 +53,14 @@ export default defineComponent({
     return {
       taskInput: '',
       tasks: []
+      insults: [
+      'You finally managed to finish this task. Congrats, genius!',
+      'Wow, you did it. Do you want a cookie now?',
+      'Took you long enough...',
+      'Even a sloth could have finished this task faster.',
+      'You finished the task. What do you want, a medal?'
+      // Add as many more insults as you want
+    ]
     };
   },
   created() {
@@ -94,10 +102,12 @@ export default defineComponent({
     completeTask(index) {
       const task = this.tasks[index];
       if (task.status === 'unfinished') {
-        alert('You just finished a task. Nice! Take a break and continue or you can rest/sleep ;)');
         task.status = 'finished';
         task.date = new Date().toLocaleDateString();
         task.time = new Date().toLocaleTimeString();
+
+        const insultIndex = Math.floor(Math.random() * this.insults.length);
+        alert('You just finished a task. ' + this.insults[insultIndex]);
       } else {
         alert('The task is marked as unfinished. Keep going!');
         task.status = 'unfinished';
