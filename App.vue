@@ -159,12 +159,14 @@ export default defineComponent({
   border: 2px solid #C0C0C0;
   border-radius: 5px;  /* Optional: Rounds the corners of the header */
   text-shadow: 1px 1px #C0C0C0;  /* Optional: Gives the text a silver shadow */
+  font-size: 32px
 }
 
 body {
   background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
   color: #0B333B;
   font-family: 'VT323', monospace;
+  font-size: 18px;
 }
 
 .comment1 {
