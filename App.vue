@@ -111,10 +111,6 @@ export default defineComponent({
 
         // Save tasks to cookies
         this.$cookies.set('tasks', this.tasks);
-
-        // Generate and show an insult
-        const insultIndex = Math.floor(Math.random() * this.insults.length);
-        alert(this.insults[insultIndex]);
       }
     },
     completeTask(index) {
