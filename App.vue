@@ -187,7 +187,7 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: #C6CCD1;
+  background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
   color: #0B333B;
   font-family: 'Forced Square', sans-serif; /* Add this line */
 }
