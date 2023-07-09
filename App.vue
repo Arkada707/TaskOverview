@@ -300,5 +300,48 @@ button:hover {
   }
 }
 
+.window {
+  width: 500px;
+  height: 400px;
+  background-color: #BFCBD5;
+  border: 1px solid #4A6172;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  background-color: #788DA2;
+  color: #FFF;
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+.title-bar-buttons {
+  display: flex;
+}
+
+.title-bar-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+  background-color: #FF605C;
+}
+
+.title-bar-title {
+  font-weight: bold;
+}
+
+.content {
+  background-color: #FFF;
+  padding: 20px;
+  height: calc(100% - 30px);
+  overflow-y: auto;
+}
+
 </style>
 
