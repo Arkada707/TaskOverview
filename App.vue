@@ -148,42 +148,33 @@ export default defineComponent({
 <style>
 #app {
   text-align: center;
-  background-color: #eef7fd;
+  background-color: #C6CCD1;
+  color: #0B333B;
 }
 
-#logo-container {
-  padding: 20px 0;
-}
-
-#split-pane {
-  display: flex;
-  justify-content: space-around;
-}
-
-#task-pane {
-  width: 45%;
-}
-
-#comment-pane {
-  width: 45%;
-  margin: 0 auto;
-  position: absolute;
-  top: 0;
+body {
+  background-color: #C6CCD1;
+  color: #0B333B;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 #wotd {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #0078d7;
-  color: white;
+  background-color: #0B333B;
+  color: #B7E0F2;
   padding: 10px;
 }
 
-body {
-  background-color: #eef7fd;
-  color: #4a4a4a;
-  font-family: Segoe UI, Tahoma, sans-serif;
+#logo-container,
+#split-pane,
+#task-pane,
+#comment-pane {
+  background-color: #F4FAFF;
+  border: 2px solid #0B333B;
+  padding: 10px;
+  margin: 10px;
 }
 
 .container {
@@ -195,33 +186,37 @@ body {
 table {
   margin: 0 auto;
   border-collapse: collapse;
+  width: 90%;
 }
 
 th,
 td {
   padding: 8px;
-  border: 1px solid #d5d5d5;
-  background-color: white;
+  border: 1px solid #0B333B;
+  background-color: #F4FAFF;
 }
 
 #taskInput {
   width: 80%;
   padding: 10px;
   margin: 10px 0;
+  background-color: #F4FAFF;
+  border: 1px solid #0B333B;
+  color: #0B333B;
 }
 
 button {
   padding: 10px;
   margin: 10px 0;
-  background-color: #0078d7;
+  background-color: #0B333B;
   border: none;
-  color: white;
+  color: #F4FAFF;
   cursor: pointer;
 }
 
 button:hover {
   opacity: 0.8;
-  background-color: #005999;
+  background-color: #092227;
 }
 
 ul {
@@ -232,16 +227,15 @@ ul {
 li {
   margin: 10px 0;
   padding: 10px;
-  background-color: #f5f5f5;
-  border: 1px solid #d5d5d5;
+  background-color: #F4FAFF;
+  border: 1px solid #0B333B;
 }
 
 input[type="text"],
 button {
-  border: 1px solid #d5d5d5;
+  border: 1px solid #0B333B;
   padding: 10px;
-  background-color: white;
-  color: #4a4a4a;
+  color: #0B333B;
+  background-color: #F4FAFF;
 }
 </style>
-
