@@ -164,7 +164,7 @@ export default defineComponent({
 body {
   background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
   color: #0B333B;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'VT323', monospace;
 }
 
 .comment1 {
