@@ -183,7 +183,7 @@ export default defineComponent({
 
 @font-face {
   font-family: 'Forced Square';
-  src: url('forced-square.ttf') format('truetype');
+  src: url('FORCED SQUARE.ttf') format('truetype');
 }
 
 #app {
