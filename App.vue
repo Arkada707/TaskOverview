@@ -221,14 +221,13 @@ export default defineComponent({
 
 #app {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
   color: #0B333B;
   font-family: 'Forced Square', sans-serif; /* Add this line */
-  min-height: 100vh;
+  min-height: auto;
   overflow-x: auto;
 }
 
@@ -274,7 +273,7 @@ body {
 table {
   margin: 0 auto;
   border-collapse: collapse;
-  width: 90%;
+  width: 90% auto;
 }
 
 th,
@@ -307,14 +306,14 @@ button:hover {
 }
 
 .window {
-  width: 100%;
-  max-width: 500px;
-  height: 100%;
+  width: 100% auto;
+  max-width: 500px auto;
+  height: 100% auto;
   background-color: #BFCBD5;
   border: 1px solid #4A6172;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  height: 100%;
+  height: 100% auto;
 }
 
 .title-bar {
