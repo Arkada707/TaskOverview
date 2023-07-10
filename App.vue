@@ -6,10 +6,29 @@
       <input v-model="taskInput" type="text" placeholder="Add new task">
       <button @click="addTask">Add Task</button>
     </div>
-    <div class="ad-zone">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4695954536473698"
-        crossorigin="anonymous"></script>
-    </div>
+    <div v-if="showEditModal" class="modal">
+    <div class="modal-content">
+      <h2>Edit Task</h2>
+      <form @submit.prevent="updateTask">
+        <div class="form-group">
+          <label for="editTaskDescription">Task Name</label>
+          <input id="editTaskDescription" v-model="editedTask.description" type="text" required>
+        </div>
+        <div class="form-group">
+          <label for="editTaskDateStart">Date and Time Start</label>
+          <input id="editTaskDateStart" v-model="editedTask.dateStart" type="text" required>
+        </div>
+        <div class="form-group">
+            <label for="editTaskDateCompleted">Date and Time Completed</label>
+            <input id="editTaskDateCompleted" v-model="editedTask.dateCompleted" type="text" required>
+            </div>
+            <div class="modal-buttons">
+              <button type="submit">Save</button>
+              <button @click="cancelEdit">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
     <table>
       <thead>
         <tr>
@@ -135,20 +154,31 @@ export default defineComponent({
     },
     editTask(index) {
       const task = this.tasks[index];
-      const newTaskDescription = prompt('Enter the new task name', task.description);
-      const newDateStart = prompt('Enter the new date and time start (YYYY-MM-DD HH:MM)', task.dateStart);
-      const newDateCompleted = prompt('Enter the new date and time completed (YYYY-MM-DD HH:MM)', task.date + ' ' + task.time);
+      this.editedTask = {
+        index,
+        description: task.description,
+        dateStart: task.dateStart,
+        dateCompleted: task.date + ' ' + task.time
+      };
+      this.showEditModal = true;
+    },
 
-      if (newTaskDescription !== null && newDateStart !== null && newDateCompleted !== null) {
-        task.description = newTaskDescription;
-        task.dateStart = newDateStart;
-        const [newDate, newTime] = newDateCompleted.split(' ');
-        task.date = newDate;
-        task.time = newTime;
+    updateTask() {
+      const task = this.tasks[this.editedTask.index];
+      task.description = this.editedTask.description;
+      task.dateStart = this.editedTask.dateStart;
+      const [newDate, newTime] = this.editedTask.dateCompleted.split(' ');
+      task.date = newDate;
+      task.time = newTime;
 
-        // Save tasks to cookies
-        this.$cookies.set('tasks', this.tasks);
-      }
+      // Save tasks to cookies
+      this.$cookies.set('tasks', this.tasks);
+
+      this.showEditModal = false;
+    },
+
+    cancelEdit() {
+      this.showEditModal = false;
     },
     downloadTasks() {
       const content = this.tasks.map(task => ({
