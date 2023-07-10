@@ -61,6 +61,7 @@
     <button @click="downloadTasks">Download Tasks</button>
     <p id="wotd">{{ jokeOfTheDay }}</p>
   </div>
+  <div id="adsgoeshere" style="background: #1d1f29; padding-top:60px; text-align: center;" v-html="adsenseContent"></div>
 </template>
 
 <script>
@@ -98,6 +99,7 @@ export default defineComponent({
         dateStart: '',
         dateCompleted: ''
       },
+      adsenseContent: '',
     };
   },
   created() {
@@ -118,6 +120,8 @@ export default defineComponent({
     
     // Update wotd with a new joke
     this.setJoke();
+    //adsense Content
+    this.adsenseContent = document.getElementById('divadsensedisplaynone').innerHTML
   },
   methods: {
     addTask() {
