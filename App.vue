@@ -307,13 +307,49 @@ button:hover {
 }
 
 /* Responsive styles for small screens */
-@media (max-width: 767px) {
-  .container {
+@media screen and (max-width: 480px) {
+  .window {
     padding: 10px;
   }
 
-  h1 {
-    font-size: 24px;
+  .title-bar {
+    font-size: 16px;
+    height: 40px;
+    padding: 0 20px;
+  }
+
+  .title-bar-buttons {
+    font-size: 16px;
+  }
+
+  .title-bar-button {
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+  }
+
+  .title-bar-title {
+    font-size: 18px;
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  .modal-content {
+    padding: 10px;
+  }
+
+  .modal-title {
+    font-size: 18px;
+  }
+
+  .edit-form {
+    gap: 15px;
+  }
+
+  .modal-buttons {
+    gap: 8px;
   }
 }
 
