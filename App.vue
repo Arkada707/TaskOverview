@@ -306,66 +306,8 @@ button:hover {
   background-color: #092227;
 }
 
-/* Responsive styles for small screens */
-@media screen and (max-width: 480px) {
-  .window {
-    padding: 10px;
-  }
-
-  .title-bar {
-    font-size: 16px;
-    height: 40px;
-    padding: 0 20px;
-  }
-
-  .title-bar-buttons {
-    font-size: 16px;
-  }
-
-  .title-bar-button {
-    width: 14px;
-    height: 14px;
-    margin-right: 8px;
-  }
-
-  .title-bar-title {
-    font-size: 18px;
-  }
-
-  .content {
-    padding: 10px;
-  }
-
-  .modal-content {
-    padding: 10px;
-  }
-
-  .modal-title {
-    font-size: 18px;
-  }
-
-  .edit-form {
-    gap: 15px;
-  }
-
-  .modal-buttons {
-    gap: 8px;
-  }
-}
-
-/* Responsive styles for medium screens */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .container {
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 26px;
-  }
-}
-
 /* Responsive styles for large screens */
-@media (min-width: 1024px) {
+@media (min-width: 460px) and (max-width: 1024px) {
   .container {
     padding: 30px;
   }
