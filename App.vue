@@ -337,8 +337,9 @@ button:hover {
 }
 
 .window {
-  width: 500px;
-  height: 400px;
+  width: 90%;
+  max-width: 500px;
+  height: 100%;
   background-color: #BFCBD5;
   border: 1px solid #4A6172;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -358,6 +359,8 @@ button:hover {
 
 .title-bar-buttons {
   display: flex;
+  background-color: #788DA2;
+  color: #FFF;
 }
 
 .title-bar-button {
@@ -376,6 +379,28 @@ button:hover {
   background-color: #FFF;
   padding: 20px;
   height: calc(100% - 30px);
+  overflow-y: auto;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: #FFF;
+  padding: 20px;
+  max-width: 400px;
+  width: 90%;
+  max-height: 80vh;
   overflow-y: auto;
 }
 
