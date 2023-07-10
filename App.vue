@@ -91,6 +91,13 @@ export default defineComponent({
         //... add as many as you want
       ],
       jokeOfTheDay: '',
+      showEditModal: false,
+      editedTask: {
+        index: null,
+        description: '',
+        dateStart: '',
+        dateCompleted: ''
+      },
     };
   },
   created() {
