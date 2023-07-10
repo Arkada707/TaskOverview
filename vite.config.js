@@ -8,19 +8,10 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     rollupOptions: {
-      external: ['/src/main.js'],
-    },
-  },
-  // Custom build configuration
-  build: {
-    rollupOptions: {
       output: {
         manualChunks: undefined,
       },
     },
-  },
-  // Custom build step to copy ads.txt
-  build: {
     outDir: 'dist',
     afterBuild: () => {
       const sourcePath = resolve(__dirname, 'ads.txt');
