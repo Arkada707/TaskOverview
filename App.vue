@@ -222,11 +222,14 @@ export default defineComponent({
 #app {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
   background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
   color: #0B333B;
   font-family: 'Forced Square', sans-serif; /* Add this line */
+  min-height: 100vh;
+  overflow-x: auto;
 }
 
 .header {
@@ -337,13 +340,14 @@ button:hover {
 }
 
 .window {
-  width: 90%;
+  width: 100%;
   max-width: 500px;
   height: 100%;
   background-color: #BFCBD5;
   border: 1px solid #4A6172;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   overflow: hidden;
+  height: 100%;
 }
 
 .title-bar {
@@ -378,7 +382,7 @@ button:hover {
 .content {
   background-color: #FFF;
   padding: 20px;
-  height: calc(100% - 30px);
+  height: 100%;
   overflow-y: auto;
 }
 
