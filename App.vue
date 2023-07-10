@@ -306,17 +306,6 @@ button:hover {
   background-color: #092227;
 }
 
-/* Responsive styles for large screens */
-@media (min-width: 460px) and (max-width: 1024px) {
-  .container {
-    padding: 30px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-}
-
 .window {
   width: 100%;
   max-width: 500px;
