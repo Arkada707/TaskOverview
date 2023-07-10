@@ -221,13 +221,14 @@ export default defineComponent({
 
 #app {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
   color: #0B333B;
   font-family: 'Forced Square', sans-serif; /* Add this line */
-  min-height: auto;
+  min-height: 100vh;
   overflow-x: auto;
 }
 
@@ -273,7 +274,7 @@ body {
 table {
   margin: 0 auto;
   border-collapse: collapse;
-  width: 90% auto;
+  width: 90%;
 }
 
 th,
@@ -305,15 +306,48 @@ button:hover {
   background-color: #092227;
 }
 
+/* Responsive styles for small screens */
+@media (max-width: 767px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+/* Responsive styles for medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+}
+
+/* Responsive styles for large screens */
+@media (min-width: 1024px) {
+  .container {
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+}
+
 .window {
-  width: 100% auto;
-  max-width: 500px auto;
-  height: 100% auto;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
   background-color: #BFCBD5;
   border: 1px solid #4A6172;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  height: 100% auto;
+  height: 100%;
 }
 
 .title-bar {
@@ -348,7 +382,6 @@ button:hover {
 .content {
   background-color: #FFF;
   padding: 20px;
-  height: 100%;
   overflow-y: auto;
 }
 
