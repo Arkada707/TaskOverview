@@ -8,27 +8,27 @@
     </div>
     <div v-if="showEditModal" class="modal">
     <div class="modal-content">
-      <h2>Edit Task</h2>
-      <form @submit.prevent="updateTask">
+      <h2 class="modal-title">Edit Task</h2>
+      <form @submit.prevent="updateTask" class="edit-form">
         <div class="form-group">
-          <label for="editTaskDescription">Task Name</label>
+          <label for="editTaskDescription">Task Name:</label>
           <input id="editTaskDescription" v-model="editedTask.description" type="text" required>
         </div>
         <div class="form-group">
-          <label for="editTaskDateStart">Date and Time Start</label>
+          <label for="editTaskDateStart">Date and Time Start:</label>
           <input id="editTaskDateStart" v-model="editedTask.dateStart" type="text" required>
         </div>
         <div class="form-group">
-            <label for="editTaskDateCompleted">Date and Time Completed</label>
-            <input id="editTaskDateCompleted" v-model="editedTask.dateCompleted" type="text" required>
-            </div>
-            <div class="modal-buttons">
-              <button type="submit">Save</button>
-              <button @click="cancelEdit">Cancel</button>
-            </div>
-          </form>
+          <label for="editTaskDateCompleted">Date and Time Completed:</label>
+          <input id="editTaskDateCompleted" v-model="editedTask.dateCompleted" type="text" required>
         </div>
-      </div>
+        <div class="modal-buttons">
+          <button type="submit">Save</button>
+          <button @click="cancelEdit">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
     <table>
       <thead>
         <tr>
@@ -253,8 +253,7 @@ body {
   font-weight: bold; /* Make the text bold */
 }
 
-.add-task,
-.ad-zone {
+.add-task {
   background-color: #F4FAFF;
   border: 2px solid #0B333B;
   padding: 10px;
@@ -378,6 +377,31 @@ button:hover {
   padding: 20px;
   height: calc(100% - 30px);
   overflow-y: auto;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 </style>
