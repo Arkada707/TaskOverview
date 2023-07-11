@@ -234,6 +234,7 @@ export default defineComponent({
   color: #0B333B;
   font-family: 'Forced Square', sans-serif;
   padding: 20px;
+  font-size: 20px;
 }
 
 #header {
@@ -253,6 +254,7 @@ export default defineComponent({
   margin-bottom: 20px;
   padding: 20px;
   font-weight: bold;
+  font-size: 20px;
 }
 
 #task-input {
@@ -291,6 +293,7 @@ th, td {
   color: #0B333B;
   background-color: #F5F8FD;
   padding: 10px;
+  font-size: 20px;
 }
 
 .modal {
