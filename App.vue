@@ -229,7 +229,7 @@ export default defineComponent({
   src: url('FORCED SQUARE.ttf') format('truetype');
 }
 
-#app {
+app {
   text-align: center;
   background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
   color: #0B333B;
@@ -237,14 +237,14 @@ export default defineComponent({
   padding: 20px;
 }
 
-#header {
+header {
   background-color: #0000FF; /* Change to the exact blue you want */
   color: #FFFFFF;
   margin-bottom: 20px;
   border: 2px solid #C0C0C0;
   border-radius: 5px;  /* Optional: Rounds the corners of the header */
   text-shadow: 1px 1px #C0C0C0;  /* Optional: Gives the text a silver shadow */
-  font-size: 28px
+  font-size: 28px;
 }
 
 body {
@@ -254,7 +254,7 @@ body {
   font-size: 26px;
 }
 
-#comment1 {
+comment1 {
   color: #000000; /* Black text */
   background-color: #FFFF00; /* Yellow background */
   margin-bottom: 20px;
