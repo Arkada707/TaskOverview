@@ -243,7 +243,7 @@ export default defineComponent({
   border: 2px solid #C0C0C0;
   border-radius: 5px;  /* Optional: Rounds the corners of the header */
   text-shadow: 1px 1px #C0C0C0;  /* Optional: Gives the text a silver shadow */
-  font-size: 42px
+  font-size: 36px
 }
 
 body {
@@ -313,7 +313,7 @@ th, td {
 }
 
 .modal-content {
-  background-color: #FFF;
+  background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
   padding: 20px;
   max-width: 400px;
   width: 90%;
