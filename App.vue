@@ -42,7 +42,7 @@
     <div id="download-tasks">
       <button @click="downloadTasks">Download Tasks</button>
     </div>
-    <div id="wotd">Word of the Day</div>
+    <p id="wotd">{{ jokeOfTheDay }}</p>
   </div>
 </template>
 
@@ -199,22 +199,36 @@ export default defineComponent({
 </script>
 
 <style>
+
+@font-face {
+  font-family: 'Forced Square';
+  src: url('FORCED SQUARE.ttf') format('truetype');
+}
+
 #app {
   text-align: center;
-  background-color: #C6CCD1;
+  background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
   color: #0B333B;
+  font-family: 'Forced Square', sans-serif; /* Add this line */
   padding: 20px;
 }
 
 #header {
+  background-color: #0000FF; /* Change to the exact blue you want */
+  color: #FFFFFF;
   margin-bottom: 20px;
+  border: 2px solid #C0C0C0;
+  border-radius: 5px;  /* Optional: Rounds the corners of the header */
+  text-shadow: 1px 1px #C0C0C0;  /* Optional: Gives the text a silver shadow */
+  font-size: 42px
 }
 
 #comment1 {
-  background-color: #FEEFB3;
-  color: #000;
-  padding: 10px;
+  color: #000000; /* Black text */
+  background-color: #FFFF00; /* Yellow background */
   margin-bottom: 20px;
+  padding: 16px;
+  font-weight: bold; /* Make the text bold */
 }
 
 #task-input {
@@ -250,8 +264,8 @@ th, td {
 }
 
 #wotd {
-  background-color: #F4FAFF;
-  color: #0B333B;
+  color: #0B333B; /* The color of the text in Emily is Away */
+  background-color: #F4FAFF; /* The color of the text background in Emily is Away */
   padding: 10px;
 }
 </style>
