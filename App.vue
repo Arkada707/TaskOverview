@@ -8,6 +8,29 @@
       <input v-model="taskInput" type="text" placeholder="Add new task">
       <button @click="addTask">Add Task</button>
     </div>
+    <div v-if="showEditModal" class="modal">
+    <div class="modal-content">
+      <h2 class="modal-title">Edit Task</h2>
+      <form @submit.prevent="updateTask" class="edit-form">
+        <div class="form-group">
+          <label for="editTaskDescription">Task Name:</label>
+          <input id="editTaskDescription" v-model="editedTask.description" type="text" required>
+        </div>
+        <div class="form-group">
+          <label for="editTaskDateStart">Date and Time Start:</label>
+          <input id="editTaskDateStart" v-model="editedTask.dateStart" type="text" required>
+        </div>
+        <div class="form-group">
+          <label for="editTaskDateCompleted">Date and Time Completed:</label>
+          <input id="editTaskDateCompleted" v-model="editedTask.dateCompleted" type="text" required>
+        </div>
+        <div class="modal-buttons">
+          <button type="submit">Save</button>
+          <button @click="cancelEdit">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
     <div id="table-container">
       <table>
         <thead>
@@ -221,6 +244,13 @@ export default defineComponent({
   border-radius: 5px;  /* Optional: Rounds the corners of the header */
   text-shadow: 1px 1px #C0C0C0;  /* Optional: Gives the text a silver shadow */
   font-size: 42px
+}
+
+body {
+  background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
+  color: #0B333B;
+  font-family: 'Forced Square', sans-serif;
+  font-size: 26px;
 }
 
 #comment1 {
