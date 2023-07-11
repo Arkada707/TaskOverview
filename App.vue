@@ -280,7 +280,7 @@ table {
 th, td {
   padding: 8px;
   border: 1px solid #0B333B;
-  background-color: #F4FAFF;
+  background-color: #F5F8FD;
 }
 
 #download-tasks {
@@ -289,7 +289,7 @@ th, td {
 
 #wotd {
   color: #0B333B;
-  background-color: #F4FAFF;
+  background-color: #F5F8FD;
   padding: 10px;
 }
 
