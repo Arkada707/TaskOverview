@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <div id="header">
-      <h1>Task</h1>
+    <h1 class="header">Tasks</h1>
     </div>
     <div class="conversation">
       <p class="comment1">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep.</p>
