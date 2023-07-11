@@ -1,52 +1,67 @@
 <template>
   <div id="app">
     <h1 class="header">Tasks</h1>
+    <p class="comment1">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep.</p>
+    <div class="add-task">
+      <input v-model="taskInput" type="text" placeholder="Add new task">
+      <button @click="addTask">Add Task</button>
     </div>
-    <div class="conversation">
-      <p class="comment1">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep.</p>
-      <div id="task-input">
-        <input v-model="taskInput" type="text" placeholder="Add new task">
-        <button @click="addTask">Add Task</button>
-      </div>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Task Name</th>
-              <th>Status</th>
-              <th>Date and Time Start</th>
-              <th>Date and Time Completed</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(task, index) in tasks" :key="index">
-              <td>{{ task.description }}</td>
-              <td>
-                <input type="checkbox" @change="completeTask(index)" :checked="task.status === 'finished'">
-                <span v-if="task.status === 'finished'">✓</span>
-              </td>
-              <td>{{ task.dateStart }}</td>
-              <td>{{ task.date }} {{ task.time }}</td>
-              <td>
-                <button @click="editTask(index)">Edit</button>
-              </td>
-              <td>
-                <button @click="deleteTask(index)">-</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div id="download-tasks">
-      <button @click="downloadTasks">Download Tasks</button>
-    </div>
-    <div id="wotd">
-      <p>Word of the Day: {{ jokeOfTheDay }}</p>
+    <div v-if="showEditModal" class="modal">
+    <div class="modal-content">
+      <h2 class="modal-title">Edit Task</h2>
+      <form @submit.prevent="updateTask" class="edit-form">
+        <div class="form-group">
+          <label for="editTaskDescription">Task Name:</label>
+          <input id="editTaskDescription" v-model="editedTask.description" type="text" required>
+        </div>
+        <div class="form-group">
+          <label for="editTaskDateStart">Date and Time Start:</label>
+          <input id="editTaskDateStart" v-model="editedTask.dateStart" type="text" required>
+        </div>
+        <div class="form-group">
+          <label for="editTaskDateCompleted">Date and Time Completed:</label>
+          <input id="editTaskDateCompleted" v-model="editedTask.dateCompleted" type="text" required>
+        </div>
+        <div class="modal-buttons">
+          <button type="submit">Save</button>
+          <button @click="cancelEdit">Cancel</button>
+        </div>
+      </form>
     </div>
   </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Task Name</th>
+          <th>Status</th>
+          <th>Date and Time Start</th>
+          <th>Date and Time Completed</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(task, index) in tasks" :key="index">
+          <td>{{ task.description }}</td>
+          <td>
+            <input type="checkbox" @change="completeTask(index)" :checked="task.status === 'finished'">
+            <span v-if="task.status === 'finished'">✓</span>
+          </td>
+          <td>{{ task.dateStart }}</td>
+          <td>{{ task.date }} {{ task.time }}</td>
+          <td>
+            <button @click="editTask(index)">Edit</button>
+          </td>
+          <td>
+            <button @click="deleteTask(index)">-</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button @click="downloadTasks">Download Tasks</button>
+    <p id="wotd">{{ jokeOfTheDay }}</p>
+  </div>
+  <div id="adsgoeshere" style="background: #1d1f29; padding-top:60px; text-align: center;" v-html="adsenseContent"></div>
 </template>
 
 <script>
