@@ -203,64 +203,223 @@ export default defineComponent({
 </script>
 
 <style>
+
+@font-face {
+  font-family: 'Forced Square';
+  src: url('FORCED SQUARE.ttf') format('truetype');
+}
+
 #app {
-  text-align: center;
-}
-
-#header {
-  background-color: #0000FF;
-  color: #FFFFFF;
-  padding: 10px;
-  border-bottom: 2px solid #C0C0C0;
-}
-
-.conversation {
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.comment1 {
-  color: #000000;
-  background-color: #FFFF00;
-  padding: 20px;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-#task-input {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-}
-
-#task-input input[type="text"] {
-  padding: 10px;
-  margin-right: 10px;
-}
-
-.table-container {
+  text-align: center;
+  background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
+  color: #0B333B;
+  font-family: 'Forced Square', sans-serif; /* Add this line */
+  min-height: 100vh;
   overflow-x: auto;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+.header {
+  background-color: #0000FF; /* Change to the exact blue you want */
+  color: #FFFFFF;
+  padding: 10px;
+  border: 2px solid #C0C0C0;
+  border-radius: 5px;  /* Optional: Rounds the corners of the header */
+  text-shadow: 1px 1px #C0C0C0;  /* Optional: Gives the text a silver shadow */
+  font-size: 42px
 }
 
-th, td {
+body {
+  background-color: #ECE9D6; /* Light gray - close approximation to Emily is Away messenger app background color */
+  color: #0B333B;
+  font-family: 'Forced Square', sans-serif;
+  font-size: 26px;
+}
+
+.comment1 {
+  color: #000000; /* Black text */
+  background-color: #FFFF00; /* Yellow background */
+  padding: 16px;
+  font-weight: bold; /* Make the text bold */
+}
+
+.add-task {
+  background-color: #F4FAFF;
+  border: 2px solid #0B333B;
   padding: 10px;
+  margin: 10px;
+}
+
+#wotd {
+  color: #0B333B; /* The color of the text in Emily is Away */
+  background-color: #F4FAFF; /* The color of the text background in Emily is Away */
+  padding: 16px;
+  border: 1px solid #0B333B;
+  border-radius: 5px;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 90%;
+}
+
+th,
+td {
+  padding: 8px;
   border: 1px solid #0B333B;
   background-color: #F4FAFF;
 }
 
-#download-tasks {
-  margin-bottom: 20px;
-}
-
-#wotd {
+input[type="text"],
+button {
+  border: 1px solid #0B333B;
+  padding: 10px;
   color: #0B333B;
   background-color: #F4FAFF;
-  padding: 10px;
 }
+
+button {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #0B333B;
+  border: none;
+  color: #F4FAFF;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+  background-color: #092227;
+}
+
+/* Responsive styles for small screens */
+@media (max-width: 767px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+/* Responsive styles for medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+}
+
+/* Responsive styles for large screens */
+@media (min-width: 1024px) {
+  .container {
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+}
+
+.window {
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  background-color: #BFCBD5;
+  border: 1px solid #4A6172;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  height: 100%;
+}
+
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  background-color: #788DA2;
+  color: #FFF;
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+.title-bar-buttons {
+  display: flex;
+  background-color: #788DA2;
+  color: #FFF;
+}
+
+.title-bar-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+  background-color: #FF605C;
+}
+
+.title-bar-title {
+  font-weight: bold;
+}
+
+.content {
+  background-color: #FFF;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: #FFF;
+  padding: 20px;
+  max-width: 400px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 </style>
