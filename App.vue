@@ -119,12 +119,12 @@ export default defineComponent({
   },
   methods: {
     addTask() {
-      var taskDescription = document.getElementById("newTaskDescription").value;
+      var newTaskDescription = document.getElementById("newTaskDescription").value;
       var currentDate = new Date();
       var currentDateString = currentDate.toLocaleDateString() + " " + currentDate.toLocaleTimeString();
 
       var newTask = {
-        "taskDescription": taskDescription,
+        "taskDescription": newTaskDescription,
         "isCompleted": false,
         "dateStart": currentDateString,
         "dateCompleted": "Not yet completed"
