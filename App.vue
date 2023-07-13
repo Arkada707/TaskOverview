@@ -228,23 +228,26 @@ export default defineComponent({
   src: url('PressStart2P.ttf') format('truetype');
 }
 
-#app {
+body {
   background-color: #000;
-  padding: 10px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: 'PressStart2P', sans-serif;
   font-size: 12px;
-  height: 100vh;
-}
-
-.window {
-  background-color: #ECE9D6;
+  padding: 20px;
+  background-color: #404040;
   border: 2px solid #000;
   border-radius: 6px;
-  padding: 8px;
-  width: 500px;
+  box-shadow: 0px 0px 10px 0px #000;
 }
 
 #header {
@@ -252,22 +255,23 @@ export default defineComponent({
   color: #FFF;
   padding: 6px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 4px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px #000;
 }
 
 .comment1 {
   color: #FFF;
   background-color: #000;
-  margin-bottom: 10px;
-  padding: 8px;
+  margin-bottom: 20px;
+  padding: 10px;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 #task-input {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 #task-input input[type="text"] {
@@ -276,7 +280,7 @@ export default defineComponent({
 
 #table-container {
   overflow-x: auto;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 table {
@@ -286,21 +290,21 @@ table {
 
 th,
 td {
-  padding: 6px;
+  padding: 8px;
   border: 1px solid #000;
   background-color: #FFF;
   font-size: 12px;
 }
 
 #download-tasks {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 #wotd {
   color: #000;
   background-color: #FFF;
-  padding: 8px;
-  font-size: 12px;
+  padding: 10px;
+  font-size: 14px;
 }
 
 .modal {
@@ -317,7 +321,7 @@ td {
 }
 
 .modal-content {
-  background-color: #ECE9D6;
+  background-color: #404040;
   padding: 10px;
   max-width: 400px;
   width: 90%;
@@ -327,6 +331,10 @@ td {
 
 .modal-title {
   text-align: center;
+  color: #FFF;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-shadow: 1px 1px #000;
 }
 
 .edit-form {
@@ -342,6 +350,7 @@ td {
 
 .form-group label {
   font-weight: bold;
+  color: #FFF;
 }
 
 .modal-buttons {
