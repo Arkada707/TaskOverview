@@ -136,23 +136,23 @@ export default defineComponent({
     },
     completeTask(index) {
       const task = this.tasks[index];
-      if (task.status === 'unfinished') {
-        const now = new Date();
-        const date = now.toLocaleDateString();
-        const time = now.toLocaleTimeString();
+  if (task.status === 'unfinished') {
+    const now = new Date();
+    const date = now.toLocaleDateString();
+    const time = now.toLocaleTimeString();
 
-        task.status = 'finished';
-        task.completionDate = `${date} ${time}`;
+    task.status = 'finished';
+    task.completionDate = `${date} ${time}`;
 
-        const randomInsult = this.completionInsults[Math.floor(Math.random() * this.completionInsults.length)];
-        alert(randomInsult);
-      } else {
-        alert('The task is marked as unfinished. Keep going!');
-        task.status = 'unfinished';
-        task.completionDate = '';
-      }
+    const randomInsult = this.completionInsults[Math.floor(Math.random() * this.completionInsults.length)];
+    alert(randomInsult);
+  } else {
+    alert('The task is marked as unfinished. Keep going!');
+    task.status = 'unfinished';
+    task.completionDate = 'Not yet completed'; // Update the completionDate property
+  }
 
-      this.saveTasksToStorage();
+  this.saveTasksToStorage();
     },
     editTask(index) {
       const task = this.tasks[index];
