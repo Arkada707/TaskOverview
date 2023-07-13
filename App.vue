@@ -57,7 +57,7 @@
                   <span v-if="task.status === 'finished'">✓</span>
                 </td>
                 <td>{{ task.startDate }}</td>
-                <td>{{ formatDate(task.completionDate) }}</td>
+                <td>{{ task.completionDate }}</td>
                 <td>
                   <button @click="editTask(index)">Edit</button>
                 </td>
