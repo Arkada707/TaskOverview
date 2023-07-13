@@ -224,54 +224,59 @@ export default defineComponent({
 
 <style>
 @font-face {
-  font-family: 'Forced Square';
-  src: url('FORCED SQUARE.ttf') format('truetype');
+  font-family: 'PressStart2P';
+  src: url('PressStart2P.ttf') format('truetype');
 }
 
 #app {
-  text-align: center;
-  background-color: #ECE9D6;
-  color: #0B333B;
-  font-family: 'Forced Square', sans-serif;
-  padding: 20px;
-  font-size: 20px;
-}
-
-#header {
-  background-color: #0000FF;
-  color: #FFFFFF;
-  margin-bottom: 20px;
-  border: 2px solid #C0C0C0;
-  border-radius: 5px;
-  text-shadow: 1px 1px #C0C0C0;
-  font-size: 28px;
+  background-color: #000;
   padding: 10px;
-}
-
-.comment1 {
-  color: #000000;
-  background-color: #FFFF00;
-  margin-bottom: 20px;
-  padding: 20px;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-#task-input {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  font-family: 'PressStart2P', sans-serif;
+  font-size: 12px;
+  height: 100vh;
+}
+
+.window {
+  background-color: #ECE9D6;
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 8px;
+  width: 500px;
+}
+
+#header {
+  background-color: #4474FF;
+  color: #FFF;
+  padding: 6px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.comment1 {
+  color: #FFF;
+  background-color: #000;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+#task-input {
+  margin-bottom: 10px;
 }
 
 #task-input input[type="text"] {
-  padding: 10px;
-  margin-right: 10px;
+  padding: 8px;
 }
 
 #table-container {
   overflow-x: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 table {
@@ -279,21 +284,23 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
-  padding: 8px;
-  border: 1px solid #0B333B;
-  background-color: #F5F8FD;
+th,
+td {
+  padding: 6px;
+  border: 1px solid #000;
+  background-color: #FFF;
+  font-size: 12px;
 }
 
 #download-tasks {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #wotd {
-  color: #0B333B;
-  background-color: #F5F8FD;
-  padding: 10px;
-  font-size: 20px;
+  color: #000;
+  background-color: #FFF;
+  padding: 8px;
+  font-size: 12px;
 }
 
 .modal {
@@ -311,7 +318,7 @@ th, td {
 
 .modal-content {
   background-color: #ECE9D6;
-  padding: 20px;
+  padding: 10px;
   max-width: 400px;
   width: 90%;
   max-height: 80vh;
@@ -325,7 +332,7 @@ th, td {
 .edit-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .form-group {
@@ -340,7 +347,7 @@ th, td {
 .modal-buttons {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
 }
 
 </style>
