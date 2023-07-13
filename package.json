@@ -8,6 +8,7 @@
     "cypress:open": "npx cypress open"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "firebase": "^9.23.0",
     "vue": "^3.3.0",
     "vue-cookies": "^1.8.3",
