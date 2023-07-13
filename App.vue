@@ -6,7 +6,7 @@
     </div>
     <div class="sidebar">
       <div class="sidebar-item">
-        <input v-model="newTaskDescription" type="text" placeholder="Add new task">
+        <input type="text" v-model="newTaskDescription">
         <button @click="addTask">Add Task</button>
       </div>
       <div class="sidebar-item" id="download-tasks">
@@ -119,19 +119,20 @@ export default defineComponent({
   },
   methods: {
     addTask() {
-      var newTaskDescription = document.getElementById("newTaskDescription").value;
       var currentDate = new Date();
       var currentDateString = currentDate.toLocaleDateString() + " " + currentDate.toLocaleTimeString();
 
       var newTask = {
-        "taskDescription": newTaskDescription,
-        "isCompleted": false,
-        "dateStart": currentDateString,
-        "dateCompleted": "Not yet completed"
+        "description": this.newTaskDescription, // Use this.newTaskDescription instead of getting the value from the DOM
+        "status": 'unfinished', // Instead of "isCompleted", use "status" to match the other parts of your code
+        "startDate": currentDateString, // Change "dateStart" to "startDate" to match your existing properties
+        "completionDate": "" // Use an empty string for an unfinished task's completion date
       };
 
-      taskArray.push(newTask);
-      displayTasks();
+      this.tasks.push(newTask); // Use this.tasks instead of taskArray
+      this.newTaskDescription = ''; // Clear the input field for the next task
+
+      this.saveTasksToStorage(); // Save tasks to localStorage
     },
     completeTask(index) {
       const task = this.tasks[index];
