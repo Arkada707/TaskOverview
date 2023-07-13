@@ -4,18 +4,16 @@
       <div class="navbar-item"><h1>TaskManager XP</h1></div>
       <div class="navbar-item" id="wotd">{{ jokeOfTheDay }}</div>
     </div>
-    <div class="content">
-      <p class="comment">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep.</p>
-      <div class="sidebar">
-        <div class="sidebar-item">
-          <input v-model="taskInput" type="text" placeholder="Add new task">
-          <button @click="addTask">Add Task</button>
-        </div>
-        <div class="sidebar-item" id="download-tasks">
-          <button @click="downloadTasks">Download Tasks</button>
-        </div>
+    <div class="sidebar">
+      <div class="sidebar-item">
+        <input v-model="taskInput" type="text" placeholder="Add new task">
+        <button @click="addTask">Add Task</button>
       </div>
-      <div class="main">
+      <div class="sidebar-item" id="download-tasks">
+        <button @click="downloadTasks">Download Tasks</button>
+      </div>
+    </div>
+    <div class="main">
         <div v-if="showEditModal" class="modal">
           <div class="modal-content">
             <h2 class="modal-title">Edit Task</h2>
@@ -73,7 +71,6 @@
       </div>
     </div>
     <div id="footer">© 2023 TaskManager XP</div>
-  </div>
 </template>
 
 <script>
