@@ -3,7 +3,7 @@
     <div id="header">
       <h1>Task</h1>
     </div>
-    <p class="comment1">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep.</p>
+    <p class="comment">Hey! You haven't finished your tasks yet! Finish them, then you can get food or sleep.</p>
     <div id="task-input">
       <input v-model="taskInput" type="text" placeholder="Add new task">
       <button @click="addTask">Add Task</button>
@@ -229,7 +229,7 @@ export default defineComponent({
 }
 
 body {
-  background-color: #F6F6F6;
+  background-color: #000000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -237,59 +237,54 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Forced Square', sans-serif;
-  font-size: 16px;
-  color: #333333;
+  font-size: 18px;
+  color: #FFFFFF;
 }
 
-.container {
-  width: 100%;
-  max-width: 800px;
-  margin: 20px;
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
   padding: 20px;
-  background-color: #FFFFFF;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.header {
+#header {
+  background-color: #4474FF;
+  color: #FFFFFF;
+  padding: 12px;
   text-align: center;
-  margin-bottom: 20px;
-}
-
-.header h1 {
-  font-size: 32px;
-  color: #4474FF;
-  margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 28px;
 }
 
 .comment {
   background-color: #FFFF00;
-  color: #333333;
-  padding: 10px;
+  color: #000000;
+  padding: 16px;
   margin-bottom: 20px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
 }
 
-.task-input {
+#task-input {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.task-input input[type="text"] {
-  padding: 10px;
+#task-input input[type="text"] {
+  padding: 12px;
   margin-right: 10px;
-  font-size: 16px;
+  font-size: 18px;
   border: 2px solid #4474FF;
   border-radius: 5px;
 }
 
-.task-input button {
-  padding: 10px 20px;
-  font-size: 16px;
+#task-input button {
+  padding: 12px 20px;
+  font-size: 18px;
   background-color: #4474FF;
   color: #FFFFFF;
   border: none;
@@ -298,11 +293,11 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.task-input button:hover {
+#task-input button:hover {
   background-color: #3355CC;
 }
 
-.table-container {
+#table-container {
   overflow-x: auto;
   margin-bottom: 20px;
 }
@@ -312,35 +307,32 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
-  padding: 10px;
-  border: 1px solid #CCCCCC;
-  background-color: #F6F6F6;
-  font-size: 16px;
+th,
+td {
+  padding: 12px;
+  border: 1px solid #000000;
+  background-color: #FFFFFF;
+  font-size: 18px;
 }
 
-.table-container th {
+table th {
   background-color: #4474FF;
   color: #FFFFFF;
   font-weight: bold;
   text-align: left;
 }
 
-.table-container td {
-  text-align: center;
-}
-
-.table-container td.completed {
+td.completed {
   background-color: #C6E0B4;
 }
 
-.table-container td.completed span {
+td.completed span {
   color: #4CAF50;
 }
 
-.table-container td button {
-  padding: 5px 10px;
-  font-size: 14px;
+td button {
+  padding: 8px 16px;
+  font-size: 16px;
   background-color: #FF3366;
   color: #FFFFFF;
   border: none;
@@ -349,17 +341,17 @@ th, td {
   transition: background-color 0.3s ease;
 }
 
-.table-container td button:hover {
+td button:hover {
   background-color: #FF0055;
 }
 
-.download-tasks {
+#download-tasks {
   text-align: center;
 }
 
-.download-tasks button {
-  padding: 10px 20px;
-  font-size: 16px;
+#download-tasks button {
+  padding: 12px 20px;
+  font-size: 18px;
   background-color: #4474FF;
   color: #FFFFFF;
   border: none;
@@ -368,19 +360,17 @@ th, td {
   transition: background-color 0.3s ease;
 }
 
-.download-tasks button:hover {
+#download-tasks button:hover {
   background-color: #3355CC;
 }
 
-.wotd {
+#wotd {
   text-align: center;
   margin-top: 20px;
-  padding: 10px;
-  font-size: 20px;
-  background-color: #F6F6F6;
-  border: 1px solid #CCCCCC;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  font-size: 24px;
+  background-color: #FFFFFF;
+  color: #000000;
 }
 
 .modal {
@@ -410,9 +400,8 @@ th, td {
 .modal-title {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 28px;
   color: #4474FF;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .edit-form {
