@@ -73,100 +73,155 @@
     <div id="footer">© 2023 TaskManager XP</div>
 </template>
 
+
 <script>
 import { defineComponent } from 'vue';
-import axios from 'axios';
 import { exportObjectAsCSV } from './utils';
 
 export default defineComponent({
-  name: 'App',
   data() {
     return {
-      jokeOfTheDay: '',
+      newTaskDescription: '',
       tasks: [],
-      taskInput: '',
+      completionInsults: [
+        //...
+        'You finally managed to finish this task. Congrats, genius!',
+        'Wow, you did it. Do you want a cookie now?',
+        'Took you long enough...',
+        'Even a sloth could have finished this task faster.',
+        'You finished the task. What do you want, a medal?'
+        // Add as many more insults as you want
+      ],
+      dailyJokes: [
+        //...
+        "You complete tasks as fast as your dating life moves... at a snail's pace.",
+        "Is your love life as disorganized as your task list? No wonder you're single!",
+        "You know, finishing a task is a lot like a relationship - both are hard for you to maintain.",
+        "Your commitment to finishing tasks is like your commitment to relationships... Oh wait, there isn't any.",
+        "I bet even your imaginary girlfriend gets more attention than your task list.",
+        "Your relationship status may be 'single', but your task list screams 'it's complicated'.",
+        "On the keyboard. U and I are next to each other... But under that there's also J and K. LOL Sad Fuck!",
+        //... add as many as you want
+      ],
+      jokeOfTheDay: '',
       showEditModal: false,
-      editedTask: {
+      taskBeingEdited: {
         index: null,
         description: '',
-        dateStart: '',
-        dateCompleted: ''
+        startDate: '',
+        completionDate: ''
       }
     };
   },
   created() {
-    this.getJokeOfTheDay();
-    this.getTasks();
+    this.loadTasksFromStorage();
+    this.setDailyJoke();
   },
   methods: {
-    async getJokeOfTheDay() {
-      try {
-        const response = await axios.get('https://api.jokeapi.dev/jokes/random');
-        this.jokeOfTheDay = response.data.joke;
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    async getTasks() {
-      try {
-        const response = await axios.get('/api/tasks');
-        this.tasks = response.data;
-      } catch (error) {
-        console.error(error);
-      }
-    },
     addTask() {
-      if (!this.taskInput) return;
-      this.tasks.push({ 
-        description: this.taskInput, 
-        status: 'ongoing',
-        dateStart: this.getCurrentDateTime(),
-        dateCompleted: ''
-      });
-      this.taskInput = '';
+      if (this.newTaskDescription) {
+        const now = new Date();
+        const date = now.toLocaleDateString();
+        const time = now.toLocaleTimeString();
+
+        this.tasks.push({
+          description: this.newTaskDescription,
+          status: 'unfinished',
+          startDate: `${date} ${time}`,
+          completionDate: ''
+        });
+        this.newTaskDescription = '';
+
+        this.saveTasksToStorage();
+      }
     },
     completeTask(index) {
-      this.tasks[index].status = this.tasks[index].status === 'finished' ? 'ongoing' : 'finished';
-      if(this.tasks[index].status === 'finished') {
-        this.tasks[index].dateCompleted = this.getCurrentDateTime();
+      const task = this.tasks[index];
+      if (task.status === 'unfinished') {
+        const now = new Date();
+        const date = now.toLocaleDateString();
+        const time = now.toLocaleTimeString();
+
+        task.status = 'finished';
+        task.completionDate = `${date} ${time}`;
+
+        const randomInsult = this.completionInsults[Math.floor(Math.random() * this.completionInsults.length)];
+        alert(randomInsult);
+      } else {
+        alert('The task is marked as unfinished. Keep going!');
+        task.status = 'unfinished';
+        task.completionDate = '';
       }
+
+      this.saveTasksToStorage();
     },
     editTask(index) {
-      this.editedTask = {
-        index: index,
-        description: this.tasks[index].description,
-        dateStart: this.tasks[index].dateStart,
-        dateCompleted: this.tasks[index].dateCompleted
+      const task = this.tasks[index];
+      this.taskBeingEdited = {
+        index,
+        description: task.description,
+        startDate: task.startDate,
+        completionDate: task.completionDate
       };
       this.showEditModal = true;
     },
     updateTask() {
-      const { index, ...task } = this.editedTask;
-      this.tasks[index] = task;
+      const task = this.tasks[this.taskBeingEdited.index];
+      task.description = this.taskBeingEdited.description;
+      task.startDate = this.taskBeingEdited.startDate;
+      const [date, time] = this.taskBeingEdited.completionDate.split(' ');
+      task.completionDate = `${date} ${time}`;
+
+      this.saveTasksToStorage();
+
       this.showEditModal = false;
-    },
-    deleteTask(index) {
-      this.tasks.splice(index, 1);
-    },
-    downloadTasks() {
-      exportObjectAsCSV(this.tasks, 'tasks.csv');
     },
     cancelEdit() {
       this.showEditModal = false;
     },
-    getCurrentDateTime() {
-      let currentdate = new Date(); 
-      let datetime = currentdate.getFullYear() + "-"
-                + (currentdate.getMonth()+1)  + "-" 
-                + currentdate.getDate() + " "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
-      return datetime;
+    downloadTasksAsCSV() {
+      const tasksData = this.tasks.map(task => ({
+        'Task Name': task.description,
+        'Status': task.status,
+        'Completion Date and Time': task.completionDate
+      }));
+
+      exportObjectAsCSV(tasksData, 'My Tasks', { keysAsHeader: true });
+    },
+    deleteTask(index) {
+      const confirmation = window.confirm("Are you sure you want to delete this task?");
+      if (confirmation) {
+        this.tasks.splice(index, 1);
+        this.saveTasksToStorage();
+      }
+    },
+    setDailyJoke() {
+      const randomJoke = this.dailyJokes[Math.floor(Math.random() * this.dailyJokes.length)];
+      this.jokeOfTheDay = randomJoke;
+    },
+    loadTasksFromStorage() {
+      const tasksJSON = localStorage.getItem('tasks');
+      if (tasksJSON) {
+        this.tasks = JSON.parse(tasksJSON);
+      } else {
+        this.addDefaultTask();
+      }
+    },
+    addDefaultTask() {
+      this.tasks.push({
+        description: 'Test 1',
+        status: 'unfinished',
+        startDate: '',
+        completionDate: ''
+      });
+    },
+    saveTasksToStorage() {
+      localStorage.setItem('tasks', JSON.stringify(this.tasks));
     }
   }
 });
 </script>
+
 
 
 <style>
