@@ -6,7 +6,7 @@
     </div>
     <div class="sidebar">
       <div class="sidebar-item">
-        <input v-model="taskInput" type="text" placeholder="Add new task">
+        <input v-model="newTaskDescription" type="text" placeholder="Add new task">
         <button @click="addTask">Add Task</button>
       </div>
       <div class="sidebar-item" id="download-tasks">
