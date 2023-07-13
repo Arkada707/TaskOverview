@@ -219,9 +219,9 @@ export default defineComponent({
       localStorage.setItem('tasks', JSON.stringify(this.tasks));
     }
     formatDate(date, time) {
-  return `${date} ${time}`;
-},
-  }
+      return `${date} ${time}`;
+    },
+  },
 });
 </script>
 
