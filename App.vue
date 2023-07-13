@@ -119,20 +119,19 @@ export default defineComponent({
   },
   methods: {
     addTask() {
-      if (this.newTaskDescription) {
-    const now = new Date();
-    const date = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+      var taskDescription = document.getElementById("newTaskDescription").value;
+      var currentDate = new Date();
+      var currentDateString = currentDate.toLocaleDateString() + " " + currentDate.toLocaleTimeString();
 
-    this.tasks.push({
-      description: this.newTaskDescription,
-      status: 'unfinished',
-      startDate: date,
-      completionDate: ''
-    });
-    this.newTaskDescription = '';
+      var newTask = {
+        "taskDescription": taskDescription,
+        "isCompleted": false,
+        "dateStart": currentDateString,
+        "dateCompleted": "Not yet completed"
+      };
 
-    this.saveTasksToStorage();
-  }
+      taskArray.push(newTask);
+      displayTasks();
     },
     completeTask(index) {
       const task = this.tasks[index];
