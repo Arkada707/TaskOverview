@@ -224,10 +224,9 @@ export default defineComponent({
 
 <style>
 @font-face {
-  font-family: 'PressStart2P';
-  src: url('PressStart2P.ttf') format('truetype');
+  font-family: 'Forced Square';
+  src: url('FORCED SQUARE.ttf') format('truetype');
 }
-
 body {
   background-color: #000;
   display: flex;
@@ -241,10 +240,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'PressStart2P', sans-serif;
+  font-family: 'Forced Square', sans-serif;
   font-size: 12px;
   padding: 20px;
-  background-color: #404040;
+  background-color: #ECE9D6;
   border: 2px solid #000;
   border-radius: 6px;
   box-shadow: 0px 0px 10px 0px #000;
@@ -263,7 +262,7 @@ body {
 
 .comment1 {
   color: #FFF;
-  background-color: #000;
+  background-color: #FFFF00;
   margin-bottom: 20px;
   padding: 10px;
   font-weight: bold;
