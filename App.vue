@@ -57,7 +57,7 @@
                   <span v-if="task.status === 'finished'">✓</span>
                 </td>
                 <td>{{ task.startDate }}</td>
-                <td>{{ formatDate(task.date, task.time) }}</td>
+                <td>{{ formatDate(task.dateStart, task.completionDate) }}</td>
                 <td>
                   <button @click="editTask(index)">Edit</button>
                 </td>
@@ -126,7 +126,7 @@ export default defineComponent({
         "description": this.newTaskDescription, // Use this.newTaskDescription instead of getting the value from the DOM
         "status": 'unfinished', // Instead of "isCompleted", use "status" to match the other parts of your code
         "startDate": currentDateString, // Change "dateStart" to "startDate" to match your existing properties
-        "completionDate": "" // Use an empty string for an unfinished task's completion date
+        "completionDate": "Not yet completed" // Use an empty string for an unfinished task's completion date
       };
 
       this.tasks.push(newTask); // Use this.tasks instead of taskArray
