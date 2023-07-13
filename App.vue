@@ -245,7 +245,7 @@ export default defineComponent({
 }
 
 body {
-  font-family: 'Tahoma', sans-serif;
+  font-family: 'Press Start 2P', cursive;
   background-color: var(--blue-xp);
   color: var(--black-xp);
 }
@@ -280,10 +280,44 @@ body {
   padding: 10px;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+td, th {
+  border: 1px solid #000;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #ddd;
+}
+
 .main {
   grid-area: main;
   background-color: var(--white-xp);
   padding: 10px;
+}
+
+button {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
 }
 
 .footer {
