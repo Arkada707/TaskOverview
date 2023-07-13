@@ -56,7 +56,7 @@
                   <input type="checkbox" @change="completeTask(index)" :checked="task.status === 'finished'">
                   <span v-if="task.status === 'finished'">✓</span>
                 </td>
-                <td>{{ task.dateStart }}</td>
+                <td>{{ task.startDate }}</td>
                 <td>{{ formatDate(task.date, task.time) }}</td>
                 <td>
                   <button @click="editTask(index)">Edit</button>
