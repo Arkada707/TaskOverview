@@ -219,6 +219,23 @@ body {
   color: var(--white-xp);
 }
 
-.content {
-  display
+.sidebar {
+  grid-area: sidebar;
+  background-color: var(--silver-xp);
+  padding: 10px;
+}
 
+.main {
+  grid-area: main;
+  background-color: var(--white-xp);
+  padding: 10px;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: var(--black-xp);
+  color: var(--white-xp);
+  padding: 10px;
+}
+
+</style>
