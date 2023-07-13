@@ -232,7 +232,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* Use min-height instead of height to accommodate content */
 }
 
 #app {
@@ -247,6 +247,9 @@ body {
   border: 2px solid #000;
   border-radius: 6px;
   box-shadow: 0px 0px 10px 0px #000;
+  width: 1920px; /* Set the width to 1920px for PC users */
+  max-width: 100%; /* Ensure it doesn't exceed the viewport width */
+  margin: 0 auto; /* Center the container horizontally */
 }
 
 #header {
@@ -356,6 +359,14 @@ td {
   display: flex;
   justify-content: space-between;
   gap: 8px;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  #app {
+    width: 100vw; /* Set the width to 100% of the viewport width */
+    height: 100vh; /* Set the height to 100% of the viewport height */
+  }
 }
 
 </style>
