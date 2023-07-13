@@ -301,7 +301,7 @@ tr:nth-child(even) {
   padding: 10px;
 }
 
-button {
+button, input[type="text"] {
   font-family: 'Press Start 2P', cursive;
   background-color: #4CAF50; /* Green */
   border: none;
@@ -313,6 +313,12 @@ button {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  height: 50px;
+}
+
+input[type="text"] {
+  background-color: #fff;
+  color: #000;
 }
 
 button:hover {
