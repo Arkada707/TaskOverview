@@ -367,6 +367,13 @@ button:hover {
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
+.modal-content input[type="text"] {
+  border: 1px solid #000000; /* Black border */
+  /* Additional styles for padding and margin can be added here */
+  padding: 4px; /* Example padding */
+  margin-top: 2px; /* Example margin */
+}
+
 .footer {
   grid-area: footer;
   background-color: var(--black-xp);
