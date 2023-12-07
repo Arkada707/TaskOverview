@@ -34,4 +34,11 @@ You may follow this template for your web application.
 The files used to deploy is netlify.
 If you want to know how to deploy it, you may ask ChatGPT :)
 
+Other than that there are some notes:
+1 - There is an issue for download task but don't worry there is always screenshot as not many are using the download feature.
+2 - If you want to see check out the website: https://taskoverview.netlify.app
+3 - If you want any feature to implement into the website let me know.
+4 - It's been a journey but I believe that I am done for this project.
+5 - Yea that's pretty much it. Have fun
+
 
