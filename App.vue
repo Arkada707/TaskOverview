@@ -119,6 +119,10 @@ export default defineComponent({
   },
   methods: {
     addTask() {
+      if (!this.newTaskDescription.trim()) {
+      alert('Task description cannot be empty');
+      return;
+      }
       var currentDate = new Date();
       var currentDateString = currentDate.toLocaleDateString() + " " + currentDate.toLocaleTimeString();
 
@@ -169,11 +173,15 @@ export default defineComponent({
       const task = this.tasks[index];
       task.description = this.taskBeingEdited.description;
       task.startDate = this.taskBeingEdited.startDate;
-      const [date, time] = this.taskBeingEdited.completionDate.split(' ');
-      task.completionDate = `${date} ${time}`;
+
+      if (this.taskBeingEdited.completionDate) {
+        const [date, time] = this.taskBeingEdited.completionDate.split(' ');
+        task.completionDate = `${date} ${time}`;
+      } else {
+        task.completionDate = '';
+      }
 
       this.saveTasksToStorage();
-
       this.showEditModal = false;
     },
     cancelEdit() {
@@ -200,11 +208,11 @@ export default defineComponent({
       this.jokeOfTheDay = randomJoke;
     },
     loadTasksFromStorage() {
-      const tasksJSON = localStorage.getItem('tasks');
-      if (tasksJSON) {
-        this.tasks = JSON.parse(tasksJSON);
-      } else {
-        this.addDefaultTask();
+      try {
+        const tasksJSON = localStorage.getItem('tasks');
+        this.tasks = tasksJSON ? JSON.parse(tasksJSON) : [];
+      } catch (error) {
+        console.error('Error loading tasks:', error);
       }
     },
     addDefaultTask() {
