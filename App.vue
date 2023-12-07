@@ -10,7 +10,7 @@
         <button @click="addTask">Add Task</button>
       </div>
       <div class="sidebar-item" id="download-tasks">
-        <button @click="downloadTasks">Download Tasks</button>
+        <button @click="downloadTasksAsCSV">Download Tasks</button>
       </div>
     </div>
     <div class="main">
