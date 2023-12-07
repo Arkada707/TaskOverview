@@ -326,8 +326,8 @@ button, input[type="text"] {
 }
 
 input[type="text"] {
-  background-color: #fff;
-  color: #000;
+  background-color: #FFFFFF;
+  color: #000000;
 }
 
 button:hover {
@@ -352,7 +352,7 @@ button:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fefefe;
+  background-color: #FFFFFF;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
