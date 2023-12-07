@@ -20,10 +20,10 @@
         <div v-if="showEditModal" class="modal">
           <div class="modal-content">
             <h2 class="modal-title">Edit Task</h2>
-            <form @submit.prevent="updateTask" class="edit-form">
+            <form @submit.prevent="updateTask">
               <div class="form-group">
                 <label for="editTaskDescription">Task Name:</label>
-                <input id="editTaskDescription" v-model="editedTask.description" type="text" required>
+                <input type="text" id="taskDescription" name="taskDescription" v-model="task.description" required>
               </div>
               <div class="form-group">
                 <label for="editTaskDateStart">Date and Time Start:</label>
