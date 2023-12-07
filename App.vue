@@ -303,7 +303,7 @@ tr:nth-child(even) {
 
 button, input[type="text"] {
   font-family: 'Press Start 2P', cursive;
-  background-color: #4CAF50; /* Green */
+  background-color: #2785FF; /* Blue */
   border: none;
   color: white;
   padding: 15px 32px;
