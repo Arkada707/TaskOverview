@@ -236,7 +236,7 @@ export default defineComponent({
 
 /* Define windows XP colors */
 :root {
-  --blue-xp: #7BA428;
+  --blue-xp: #00000000;
   --green-xp: #0035DB;
   --silver-xp: #C0C0C0;
   --white-xp: #FFFFFF;
