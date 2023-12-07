@@ -104,13 +104,13 @@ export default defineComponent({
         //... add as many as you want
       ],
       jokeOfTheDay: '',
-      showEditModal: false,
       taskBeingEdited: {
         index: null,
         description: '',
         startDate: '',
         completionDate: ''
-      }
+      },
+      showEditModal: false,
     };
   },
   created() {
@@ -165,7 +165,8 @@ export default defineComponent({
       this.showEditModal = true;
     },
     updateTask() {
-      const task = this.tasks[this.taskBeingEdited.index];
+      const index = this.taskBeingEdited.index;
+      const task = this.tasks[index];
       task.description = this.taskBeingEdited.description;
       task.startDate = this.taskBeingEdited.startDate;
       const [date, time] = this.taskBeingEdited.completionDate.split(' ');
