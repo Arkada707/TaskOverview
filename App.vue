@@ -14,6 +14,9 @@
       </div>
     </div>
     <div class="main">
+      <div v-if="task">
+        {{ task.description }}
+      </div>
         <div v-if="showEditModal" class="modal">
           <div class="modal-content">
             <h2 class="modal-title">Edit Task</h2>
@@ -159,14 +162,19 @@ export default defineComponent({
   this.saveTasksToStorage();
     },
     editTask(index) {
-      const task = this.tasks[index];
-      this.taskBeingEdited = {
-        index,
-        description: task.description,
-        startDate: task.startDate,
-        completionDate: task.completionDate
-      };
-      this.showEditModal = true;
+      console.log('Selected task:', this.tasks[index]);
+      if (this.tasks[index]) {
+        this.taskBeingEdited = {
+          index: index,
+          description: this.tasks[index].description,
+          startDate: this.tasks[index].startDate,
+          completionDate: this.tasks[index].completionDate
+        };
+        this.showEditModal = true;
+      } else {
+        console.error('Task not found');
+        // Handle the error appropriately
+      }
     },
     updateTask() {
       const index = this.taskBeingEdited.index;
