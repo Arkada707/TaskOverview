@@ -36,10 +36,15 @@ Task overview is the first website that I have built.
 You may follow this template for your web application.
 
 
+
 The files used to deploy is netlify.
 If you want to know how to deploy it, you may ask ChatGPT :)
 
+
+
+
 Other than that there are some notes:
+
 
 
 1 - There is an issue for download task but don't worry there is always screenshot as not many are using the download feature.
