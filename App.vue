@@ -23,15 +23,15 @@
             <form @submit.prevent="updateTask">
               <div class="form-group">
                 <label for="editTaskDescription">Task Name:</label>
-                <input type="text" id="taskDescription" name="taskDescription" v-model="task.description" required>
+                <input type="text" id="editTaskDescription" name="editTaskDescription" v-model="editTaskDescription" required>
               </div>
               <div class="form-group">
                 <label for="editTaskDateStart">Date and Time Start:</label>
-                <input id="editTaskDateStart" v-model="editedTask.dateStart" type="text" required>
+                <input id="editTaskDateStart" v-model="editTask.dateStart" type="text" required>
               </div>
               <div class="form-group">
                 <label for="editTaskDateCompleted">Date and Time Completed:</label>
-                <input id="editTaskDateCompleted" v-model="editedTask.dateCompleted" type="text" required>
+                <input id="editTaskDateCompleted" v-model="editTask.dateCompleted" type="text" required>
               </div>
               <div class="modal-buttons">
                 <button type="submit">Save</button>
